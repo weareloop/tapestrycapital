@@ -18,4 +18,5 @@ function salient_child_enqueue_styles() {
 }
 add_shortcode('animation', 'animation_render');
 
+
 ?>
