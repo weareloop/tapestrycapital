@@ -53,15 +53,33 @@ add_action('wp_enqueue_scripts', 'loop_scripts', 999999);
 // Functions++
 //include_once(dirname( __FILE__ )."/functions_modules.php");
 //include_once(dirname( __FILE__ )."/functions_structure.php");
+
+
+////////////////
+// post-type //
+////////////////
 include_once(dirname(__FILE__) . "/components/post-type/dev-page/dev-page.php");
 function dev_page()
 {
     // Only enqueue on Dev Page CPTs
     if (is_singular('dev-page')) {
-        wp_enqueue_style('text-basics', get_stylesheet_directory_uri() . '/components/post-type/dev-page/dev-page.css', array(), rand());
+        wp_enqueue_style('dev-page', get_stylesheet_directory_uri() . '/components/post-type/dev-page/dev-page.css', array(), rand());
     }
 }
 add_action('wp_enqueue_scripts', 'dev_page', 999999);
+
+include_once(dirname(__FILE__) . "/components/post-type/story/story.php");
+
+
+////////////////
+// post-grids //
+////////////////
+include_once(dirname( __FILE__ )."/components/post-grids/post-grids.php");
+function post_grids(){
+    wp_enqueue_style(  'post-grids', get_stylesheet_directory_uri() . '/components/post-grids/post-grids.css',array(),rand());
+    wp_enqueue_script( 'post-grids', get_stylesheet_directory_uri() . '/components/post-grids/post-grids.js',array('jquery'),rand());
+}
+add_action( 'wp_enqueue_scripts', 'post_grids',999999 );
 
 /////////////////
 // text-basics //
@@ -89,6 +107,7 @@ add_action('wp_enqueue_scripts', 'statistics', 999999);
 ///////////////////
 // Featured Card //
 ///////////////////
+include_once(dirname(__FILE__) . "/components/featured-card/featured-card.php");
 function featured_card()
 {
     wp_enqueue_script('featured-card',  get_stylesheet_directory_uri() . '/components/featured-card/featured-card.js', array('jquery'), rand());
@@ -130,18 +149,23 @@ function image_video()
     wp_enqueue_style('image-video', get_stylesheet_directory_uri() . '/components/image-video/image-video.css', array(), rand());
 }
 add_action('wp_enqueue_scripts', 'image_video', 999999);
-
+////////////////
+// Hero Areas //
+////////////////
+wp_enqueue_style('hero-areas', get_stylesheet_directory_uri() . '/components/hero-areas/hero-areas.css', array(), rand());
+wp_enqueue_script('hero-areas',   get_stylesheet_directory_uri() . '/components/hero-areas/hero-areas.js', array('jquery'), rand());
 ///////////////
 // Animation //
 ///////////////
-// include_once(dirname(__FILE__) . "/components/animation/animation.php");
+include_once(dirname(__FILE__) . "/components/animation/animation.php");
+/*
 function animation()
 {
     wp_enqueue_script('animation',  get_stylesheet_directory_uri() . '/components/animation/animation.js', array('jquery'), rand());
     wp_enqueue_style('animation', get_stylesheet_directory_uri() . '/components/animation/animation.css', array(), rand());
 }
 add_action('wp_enqueue_scripts', 'animation', 999999);
-
+*/
 
 /////////////////////////////////////////
 // Google Analytics tracking code //

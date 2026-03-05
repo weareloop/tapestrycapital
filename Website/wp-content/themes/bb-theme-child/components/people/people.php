@@ -9,7 +9,7 @@ function people_module($atts) {
     ),$atts);
     $people_id = (!empty($param['id'])) ? $param['id'] : '';
     $columns = (!empty($param['columns'])) ? $param['columns'] : 2;
-    $toggle = (!empty($param['toggle'])) ? $param['toggle'] : false;
+    $toggle = (!empty($param['toggle'])) ? $param['toggle'] : true;
     $img_placeholder = (!empty($param['image-placeholder'])) ? $param['image-placeholder'] : '';
 
     ob_start();
@@ -24,11 +24,15 @@ function people_module($atts) {
                         $img = get_sub_field('people-card_img',$people_id);
                         $name = get_sub_field('people-card_name',$people_id);
                         $title = get_sub_field('people-card_title',$people_id);
-                        $desc = get_sub_field('people-card_desc',$people_id);
-                        $url = get_sub_field('people-card_link',$people_id);
-                        $link_text = get_sub_field('people-card_link-text',$people_id); ?>
+
+                        $info_group = get_sub_field('info_group',$people_id);
+                        $img = $info_group["people-card_img"];
+                        $name = $info_group["people-card_name"];
+                        $title = $info_group["people-card_title"];
+                        $desc = get_sub_field('people-card_desc',$people_id); ?>
 
                         <li class="people-list_item">
+
                             <div class="people--img">
                                 <?php if ($img) : ?>
                                     <img src="<?= esc_url($img['url']); ?>" alt="<?= esc_attr($img['alt']); ?>" />
@@ -37,26 +41,23 @@ function people_module($atts) {
                                 <?php endif; ?>
                             </div>
                             <div class="item--details">
-                                <h2 class="h4"><?= $title; ?></h2>
-                                <div>
-								    <p class="moreDetails"><?= $desc; ?></p>
-                                    <?php if($toggle=="true"): ?>
-                                        <div>
-                                            <button class="moreBtn">Read More</button>
-                                        </div>
-                                    <?php else: ?>
-                                        <?php if ($url) : ?>
-                                            <div>
-                                                <a href="<?= $url; ?>" class="arrowlink">
-                                                    <?= $link_text ?>
-                                                </a>
-                                            </div>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-                                    <div>
-                                    </div>
-                                </div>
+                                <h3 class="h4"><?= $name; ?></h2>
+                                <p class="title"><?= $title; ?></h2>
+								    
+                                    
+                                    
+                            
                             </div>
+                            <div>
+                            <?php if($toggle=="true"): ?>
+                                        <div class="moreDetails"><?= $desc; ?></div>
+                                        <div>
+                                            <button class="moreBtn">See Bio</button>
+                                        </div>
+                                    <?php endif; ?>
+                                    
+                            </div>
+                            
                         </li>
 
                         <?php endwhile;

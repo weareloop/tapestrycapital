@@ -475,7 +475,7 @@ body.fl-builder-edit .card-carousel-slide{
     float:left;
 } */
 .tag-resource-card p,
-.tag-hero p,{
+.tag-hero p{
     margin-bottom:0;
 }
 .title-resource-card{
@@ -655,6 +655,264 @@ body.fl-builder-edit .card-carousel-slide{
     background-position: 0 18px;
 }
 
+
+/**********************/
+/* Highlights Flyouts */
+/**********************/
+
+
+html.clipforsticky, html.clipforsticky body{
+    overflow-x: clip;
+}
+
+.flyout_featured_img img {border-radius:30px;}
+.highlights_col_flyouts >.fl-col-content {
+    position:relative;
+}
+
+
+.highlights_col_left .fl-col-content{
+    position: relative;
+    z-index: 1;
+}
+.highlights_img {
+    position: sticky;
+    top: 20px;
+}
+
+.highlights_col_flyouts >.fl-col-content:after {
+    content: "";
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    height: 150px;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), var(--orange-light) 90%);
+    pointer-events: none;
+}
+
+.uabb-offcanvas-photo-content  {
+    width:200px;
+    height:200px;
+    border-radius:30px;
+    max-width: initial;
+    overflow:hidden;
+}
+.highlight_item .uabb-offcanvas-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    max-width: initial;
+    transition: all .5s ease;
+    object-fit: cover;
+}
+
+.highlight_item .uabb-offcanvas-photo:hover {
+    transform:scale(1.1);
+}
+
+.highlight_item .highlight_title_trigger {
+    background-image: linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 100% 1px;
+    transition:all .25s ease;
+}
+.highlight_item:hover .highlight_title_trigger {
+    color:var(--yellow) !important;
+    /*
+    background-image: linear-gradient(currentColor, currentColor);
+    animation: 0.25s underline;
+    */
+}
+
+.uabb-offcanvas-close .uabb-offcanvas-close-icon {
+    font-size: 32px !important;
+}
+.uabb-offcanvas-close-icon-wrapper .uabb-offcanvas-close {
+    width: 55px;
+    height: 55px;
+    padding: 12px 17px;
+    border-radius: 100px !important;
+    margin:20px;
+    border: 0;
+    color: var(--black);
+}
+
+body.flyout-open {
+    overflow: hidden;
+}
+
+.uabb-offcanvas-content {
+    overflow-y:scroll;
+    height:100%;
+}
+
+.uabb-offcanvas {visibility:hidden}
+.uabb-offcanvas.uabb-off-canvas-show {visibility:visible}
+
+
+
+/*****************/
+/* Scrolling Row */
+/*****************/
+.scrolling_row_item {
+    display:flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom:26px;
+}
+.scrolling_row_image img {
+    width:260px;
+    height:260px;
+    object-fit:cover;
+    max-width: initial;
+    border-radius: 24px;
+    transition: all 0.5s ease;
+}
+.scrolling_row_image {
+    overflow: hidden;
+    width: 260px;
+    height: 260px;
+    background: #333;
+    border-radius: 30px;
+    background-image: url(/wp-content/uploads/cropped-tapestry-favicon.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position:relative;
+    flex-shrink: 0;
+    /* opacity: .5; */
+}
+
+.scrolling_row_website:is(:hover,:focus),
+.scrolling_row_website:is(:hover,:focus) h3 { 
+    text-decoration:none !important;
+}
+.scrolling_row_website:is(:hover,:focus) h3:after { opacity:1;}
+.scrolling_row_websitem,
+.scrolling_row_website h3,
+.scrolling_row_item h3 {
+    color:var(--orange-tapestry);
+    text-transform:initial;
+    transition:all .25s ease;
+    text-decoration:none !important;
+}
+.scrolling_row_website:is(:hover,:focus) img{
+    transform: scale(1.05);
+}
+.scrolling_row_cats {
+    margin-top: 8px;
+    color:var(--black);
+    font-size: 16px;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; 
+    line-height: 1.63rem;
+}
+.scrolling_row_scroller {
+    margin-bottom:-150px;
+}
+.scrolling_row_icon.primary {display:block;}
+.scrolling_row_icon {
+    background: var(--white);
+    color: var(--orange-tapestry);
+    padding: 4px 16px;
+    border-radius:100px;
+    display:none;
+    position: absolute;
+    font-family: var(--font-content);
+    font-size: 14px;
+    font-size: .88rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    line-height: 1.38rem;
+}
+.scrolling_row_icons {
+    position: absolute;
+    top: 0;
+    margin: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/*********************/
+/* END Scrolling Row */
+/*********************/
+
+/*********************/
+/* Two Column Cards  */
+/*********************/
+.two_col_card_col .fl-col-content{
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    align-items: stretch;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+.two_col_card_col .fl-col-content > .fl-module{
+    flex-basis: 50%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    @media screen and (max-width: 768px) {
+        flex-shrink: 1;
+    }
+}
+
+.two_col_card_col .fl-col-content > .fl-photo, 
+.two_col_card_col .fl-col-content > .fl-photo .fl-photo-content, 
+.two_col_card_col .fl-col-content > .fl-photo img[class*="wp-image-"], 
+.fl-post .two_col_card_col .fl-col-content > .fl-photo img[class*="wp-image-"]{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+    display: block;
+    @media screen and (max-width: 768px) {
+        height:280px;
+        width:100%;
+    }
+}
+/*************************/
+/* END Two Column Cards  */
+/*************************/
+/**************/
+/* Statistics */
+/**************/
+body:not(.fl-builder-edit) .photo-overlap {
+    position: absolute;
+}
+
+body:not(.fl-builder-edit) .photo-overlap.bottom {
+    bottom: -20px;
+}
+
+body:not(.fl-builder-edit) .photo-overlap.top {
+    top: -16px;
+    @media only screen and (max-width: 768px) {
+        top:10px;
+    }
+}
+
+body:not(.fl-builder-edit) .photo-overlap.right {
+    right: 36px;
+    @media only screen and (max-width: 768px) {
+        right: 16px;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .fl-builder-content .maxwidth350.three_col_stats_box3, 
+    .fl-builder-content .maxwidth350.three_col_stats_box2, 
+    .fl-builder-content .maxwidth350.three_col_stats_box1{
+        max-width: 280px;
+        min-width: unset !important;
+    }
+}
+
+
 /*  BB "LARGE" DESKTOP, only */
 @media only screen and (min-width: 992px) and (max-width: 1366px) {
     .row-resource-card.col-3 .fl-col-group:not(.fl-col-group-nested) {
@@ -669,9 +927,52 @@ body.fl-builder-edit .card-carousel-slide{
     .col-resource-card:hover .info-resource-card .fl-col-content{
         height: calc(100% - 215px);
     } */
+    .scrolling_row_image,
+    .scrolling_row_image img{
+        width: 200px;
+        height: 230px;
+    }
 }
 /* TABLET, and down */
 @media only screen and (max-width: 992px) {
+    /*****************/
+    /* Scrolling Row */
+    /*****************/
+    .scrolling_row_scroller {
+        margin-bottom: 0;
+        flex-direction: row;
+        gap: 36px;
+        display:flex;
+    }
+    .scrolling_row_scroller:before {display:none !important}
+    .scrolling_row_scroller .scrolling_row_item {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 26px;
+        flex-direction: column;
+        width: 273px;
+    }
+    .highlights_col_flyouts {overflow: auto;}
+    .scrolling_row_image,
+    .scrolling_row_image img {
+        width: 273px;
+        height: 205px;
+        border-radius: 20px;
+    }
+    .scrolling_row_website h3:after {
+        margin-top: 1px;
+    }
+    .highlights_col_flyouts >.fl-col-content:after {
+        display:none;
+    }
+    .highlights.fl-row:not(.nopadding) >.fl-row-content-wrap >.fl-row-content{
+        padding-left: 0;
+        padding-right: 0;
+    } 
+    /**********************/
+    /* End: Scrolling Row */
+    /**********************/
     .row-resource-card.col-3 .fl-col-group:not(.fl-col-group-nested) {
         grid-template-columns: 1fr 1fr;
     }

@@ -1,0 +1,187 @@
+/*************************/
+/*  START :: Hero Areas  */
+/*************************/
+.hero-row.fl-row-bg-overlay .fl-row-content-wrap:after{
+    background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 26.44%, rgba(0, 0, 0, 0.50) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.40) 100%);
+}
+.hero-row .fl-col-content{
+    display: flex;
+    gap: 26px;
+    flex-direction: row;
+}
+.hero-info-box{
+    flex-basis: 500px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.hero-animation{
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+/**********************/
+/***hero play button***/
+/**********************/
+body:not(.fl-builder-edit) .row--hero-full {
+    overflow: hidden;    
+}
+
+.fl-row-bg-video .fl-bg-video iframe, 
+.fl-row-bg-embed .fl-bg-embed-code iframe {
+    /* increase height of full-screen videos enough that youtube player's chrome is hidden */
+    min-height: 140vh;
+}
+
+button.yt-play-button::before {
+    transform: translate(0px,4px);
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: url(/wp-content/uploads/button-play.svg) center center / contain no-repeat;
+    margin-right: 5px;
+    display: inline-block;
+}
+button.yt-pause-button::before {
+    transform: translate(0px,4px);
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: url(/wp-content/uploads/button-pause.svg) center center / contain no-repeat;
+    margin-right: 5px;
+    display: inline-block;
+}
+button.yt-play-button,
+button.yt-pause-button {
+    background: transparent;
+    border: 0;
+    color: white;
+    filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, .2));
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-size: 1.13rem;
+    font-weight: 700;
+    line-height: 28px;
+    line-height: 1.75rem;
+    cursor: pointer;
+    visibility: hidden;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.20);
+    transform: scale(0);
+    transition: all .2s ease;
+    padding: 0px;
+    width: auto;
+    /* left: 0; */
+}
+button.yt-play-button:focus,
+button.yt-pause-button:focus,
+button.yt-play-button:hover,
+button.yt-pause-button:hover{
+    border: none!important;
+    background-color: transparent!important;
+    color: white!important;
+}
+/* Mobile */
+@media only screen and (max-width: 768px) {
+    button.yt-play-button,
+    button.yt-pause-button {
+        bottom: 0;
+    }
+}
+
+button.yt-play-button.active,
+button.yt-pause-button.active {
+    visibility:visible;
+    transform:scale(1);
+}
+
+
+/* .hero-home-video .sub-page-col .youtube_controls {
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    left: 40px;
+    margin-left: 0;
+    width: unset;
+} */
+
+/* .youtube_controls_wrapper {
+    position: relative;
+} */
+.youtube_controls_wrapper--center .youtube_controls{
+    width: 100%;
+    left: unset;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    bottom: 16px;
+    position: relative;
+}
+.youtube_controls {
+    width: 100%;
+}
+
+
+
+
+/**************************************/
+/*  Hero Area - Full Screen  */
+/**************************************/
+.text-shadow {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/****************************************************/
+/*  Hero - Full Screen - Center - Expandable Intro  */
+/****************************************************/
+.row--hero-full-expandable .fl-module-heading.marginauto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.zoom_in_col{
+    position: relative;
+    transition: all 0.5s;
+}
+.zoom_in_col.fl-col .fl-col-content,
+.zoom_in_col.fl-module-box .fl-module {
+    position: relative;
+    z-index: 2;
+}
+.zoom_in_col .zoom_in_bg{
+    background-color: currentColor;
+    border-radius: 16px 16px 0 0;
+    content: " ";
+    left: 0;
+    width: 100%;
+    height: calc(100% + 1px); /* to cover 1px gap at bottom */
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+.zoom_col .fl-col-content{
+    max-width: 1366px;
+}
+.slick-initialized .slick-slide.home-page-tab{
+    background-color: rgba(0, 0, 0, 0.7);
+    padding:6px 44px 20px 9px;
+    display: inline-flex;
+    width: 200px!important;
+    height:auto;
+    gap:6px;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    border-left:3px solid transparent;
+    top:0;
+    cursor:pointer;
+}
+/*************************/
+/*  END   :: Hero Areas  */
+/*************************/
+
+/**************************************/
+/*  START :: Hero Areas  – RESPONSIVE */
+/**************************************/
+
+/**************************************/
+/*  END   :: Hero Areas  – RESPONSIVE */
+/**************************************/

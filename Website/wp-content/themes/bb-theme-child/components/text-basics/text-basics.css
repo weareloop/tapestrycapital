@@ -1,5 +1,186 @@
 /*
     ===================
+    Small Height Image
+    ===================
+*/
+.smallheight,
+.smallheight .fl-photo-content{
+    height:100%;
+    width:auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    @media screen and (max-width: 1366px) {
+        justify-content: flex-start;
+    }
+}
+.smallheight img[class*="wp-image-"],
+.fl-post .smallheight img[class*="wp-image-"]{
+    height:460px;
+    width:auto;
+    object-fit: cover;
+    @media screen and (max-width: 992px) {
+        height:360px;
+        width:100%;
+    }
+    @media screen and (max-width: 768px) {
+        height:280px;
+        width:100%;
+    }
+}
+.fl-col-content:has(.background-pattern-small){
+    position: relative;
+}
+body:not(.fl-builder-edit) .background-pattern-small{
+    position: absolute;
+    top:50%;
+    right: 8px;
+    height: 690px;
+    transform: translateY(-50%);
+    & > .fl-photo-content,
+    & > .fl-photo-content > .fl-photo-img{
+        height: 100%;
+        width: auto;
+        max-width:unset;
+    }
+    @media screen and (max-width: 1366px) {
+        transform: none;
+        top:-66px;
+    }
+    @media screen and (max-width: 768px) {
+        top:-88px;
+        right: unset;
+        left: -56px;
+        height: 368px;
+    }
+}
+body:not(.fl-builder-edit) .background-pattern-small.right{
+    position: absolute;
+    top:50%;
+    left: 8px;
+    right:unset;
+    height: 690px;
+    transform: translateY(-50%);
+    & > .fl-photo-content,
+    & > .fl-photo-content > .fl-photo-img{
+        height: 100%;
+        width: auto;
+        max-width:unset;
+    }
+    @media screen and (max-width: 1366px) {
+        transform: none;
+        top:-66px;
+    }
+    @media screen and (max-width: 768px) {
+        top:-88px;
+        right: unset;
+        left: -56px;
+        height: 368px;
+    }
+}
+/*
+    ===================
+    Large Height Image
+    ===================
+*/
+.largeheight,
+.largeheight img[class*="wp-image-"],
+.largeheight .fl-photo-content,
+.fl-post .largeheight img[class*="wp-image-"]{
+    height: 100%;
+    min-height:720px;
+    width:auto;
+    object-fit: cover;
+    @media screen and (max-width: 1366px) {
+        min-height:640px;
+    }
+    @media screen and (max-width: 992px) {
+        min-height:unset;
+        height:480px;
+        width:100%;
+    }
+    @media screen and (max-width: 768px) {
+        height:260px;
+        width:100%;
+    }
+}
+.acf-info-col .fl-col-content{
+    min-height: 720px;
+    @media screen and (max-width: 1366px) {
+        min-height:640px;
+    }
+    @media screen and (max-width: 992px) {
+        min-height:unset;
+    }
+}
+.fl-col-content:has(.background-pattern){
+    position: relative;
+}
+body:not(.fl-builder-edit) .background-pattern{
+    position: absolute;
+    top:-100px;
+    right: -64px;
+    height: calc(100% + 200px);
+    & > .fl-photo-content,
+    & > .fl-photo-content > .fl-photo-img{
+        height: 100%;
+        width: auto;
+        max-width:unset;
+    }
+    @media screen and (max-width: 992px) {
+        top:-56px;
+        right: 268px;
+        height: calc(100% + 112px);
+    }
+    @media screen and (max-width: 768px) {
+        top:-36px;
+        right: unset;
+        left: -60px;
+        height: calc(100% + 112px);
+    }
+}
+body:not(.fl-builder-edit) .background-pattern.right{
+    position: absolute;
+    top:-100px;
+    left: -64px;
+    height: calc(100% + 200px);
+    & > .fl-photo-content,
+    & > .fl-photo-content > .fl-photo-img{
+        height: 100%;
+        width: auto;
+        max-width:unset;
+    }
+    @media screen and (max-width: 992px) {
+        top:-56px;
+        left: unset;
+        right: 268px;
+        height: calc(100% + 112px);
+    }
+    @media screen and (max-width: 768px) {
+        top:-36px;
+        left: unset;
+        right: 72px;
+        height: calc(100% + 112px);
+    }
+}
+/*
+    =======================
+    2 Column Quick Link Row
+    =======================
+*/
+.quck-link-img,
+.quck-link-img img[class*="wp-image-"],
+.quck-link-img .fl-photo-content,
+.fl-post .quck-link-img img[class*="wp-image-"]{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    @media screen and (max-width: 768px) {
+        height: 280px;
+    }
+}
+/*
+    ===================
     3 Column Icon Links
     ===================
 */
@@ -15,49 +196,101 @@
             FAQ
     ===================
 */
-
-.fl-accordion-button{
+.fl-accordion-button a.fl-accordion-button-icon-left:hover, 
+.fl-accordion-button a.fl-accordion-button-icon-left:focus, 
+.fl-accordion-button a.fl-accordion-button-icon-left{
+    margin-inline-end: 66px;
+    opacity: 1 !important;
+    @media screen and (max-width: 992px) {
+        margin-inline-end: 44px;
+    }
+    @media screen and (max-width: 768px) {
+        margin-inline-end: 26px;
+    }
+}
+.fl-accordion-button-icon.fa-plus:before{
+    content:'';
+    display: block;
+    background-image: url(/wp-content/uploads/Plus-Symbol-Desktop.svg);
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(180deg);
+    transition: all 0.2s ease;
+}
+.fl-accordion-button-icon.fa-minus:before{
+    content:'';
+    display: block;
+    background-image: url(/wp-content/uploads/Minus-Symbol-Desktop.svg);
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(0deg);
+    transition: all 0.2s ease;
+}
+.process-expansion-row .fl-accordion-button{
     display: flex;
     align-items: center;
 }
 
-.fl-builder-content .fl-accordion-button a.fl-accordion-button-icon{
+.fl-builder-content .process-expansion-row .fl-accordion-button a.fl-accordion-button-icon{
+    opacity: 1;
+    display: none;
+}
+
+.process-expansion-row .fl-accordion-large .fl-accordion-button-label{
+    color:var(--black);
+    font-family: var(--font-content);
+    font-size: 22px;
+    font-size: 1.38rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    line-height: 2.13rem;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+    @media screen and (max-width: 992px) {
+        font-size: 20px;
+        font-size: 1.25rem;
+    }
+}
+.process-expansion-row .fl-accordion-item{
+    padding-left: 20px;
+    background-image: linear-gradient(var(--orange-tapestry),var(--orange-tapestry));
+    background-size: 1px 0%;
+    background-repeat: no-repeat;
+    background-position: top left;
+    transition: all 0.5s ease;
+}
+.process-expansion-row .fl-accordion-item:last-child{
+    margin-bottom:0;
+}
+.process-expansion-row .fl-accordion-item-active{
+    animation: borderleft 0.2s 0.3s forwards;
+}
+
+@keyframes borderleft {
+  from {background-size: 1px 0%;}
+  to {background-size: 1px 100%;}
+}
+.process-expansion-row .fl-accordion-item-active .fl-accordion-button-label,
+.process-expansion-row .fl-accordion-button-label:focus,
+.process-expansion-row .fl-accordion-button-label:hover{
+    color:var(--orange-tapestry);
     opacity: 1;
 }
-
-.fl-accordion-button-icon-left{
-    margin-inline-end: 18px;
-}
-
-.fl-accordion-button-icon-right{
-    margin-inline-start: 18px;
-}
-
-.fl-builder-content .fl-accordion-button .fl-accordion-button-icon i{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.fl-builder-content .fl-accordion-button i.fl-accordion-button-icon.fa-minus::before {
-    background: url(/wp-content/uploads/minus-icon.svg) center center / contain no-repeat;
-    transition: all 0.25s ease;
-    content: "";
-    width: 21px;
-    height: 21px;
-    background-size: cover;
-    display: inline-block;
-}
-
-.fl-builder-content .fl-accordion-button i.fl-accordion-button-icon.fa-plus::before {
-    background: url(/wp-content/uploads/plus-icon.svg) center center / contain no-repeat;
-    transform: rotate(180deg);
-    transition: all 0.25s ease;
-    content: "";
-    width: 21px;
-    height: 21px;
-    background-size: cover;
-    display: inline-block;
+.process-expansion-row .fl-accordion-content > *{
+    font-family: var(--font-content);
+    font-size: 16px;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    line-height: 1.63rem;
 }
 @media screen and (max-width: 1366px) {
     /*

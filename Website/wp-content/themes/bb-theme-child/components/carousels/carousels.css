@@ -29,7 +29,7 @@ body.fl-builder-edit .slider-header:after{
 }
 .slider-ctl{
     display:flex;
-    gap:14px;
+    gap:12px;
     justify-content:flex-start;
 }
 ul.slick-dots{
@@ -50,9 +50,14 @@ ul.slick-dots{
     background-color: transparent;
     color: inherit;
     padding: 0;
-    font-weight:bold;
     border: 1px solid transparent;
     pointer-events: none;
+    font-size: 18px;
+    font-size: 1.13rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    line-height: 1.38rem;
 }
 .slider-dot{
     display: flex;
@@ -91,78 +96,228 @@ ul.slick-dots{
 /**********************/
 .action-carousel-slide{
     overflow: hidden;
-    width:472px!important;
+    width:500px!important;
+    min-height: 580px;
     margin:13px;
     display: flex!important;
+}
+body.fl-builder-edit .action-carousel-slide{
+    justify-content: start;
+    align-items: start;
+}
+.action-carousel-slide .fl-module-info-box{
+    padding: 8px;
+    border-radius: 16px;
+    background-color: var(--gray-light);
+    width: 320px;
+}
+.action-carousel-slide .uabb-image{
+    border-radius: 50px;
+    overflow: hidden;
+}
+.action-carousel-slide .uabb-image-content{
+    width: 44px;
+    height:44px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--orange-tapestry);
+    display: flex;
+    flex-direction: column;
 }
 .action-carousel-col .fl-col-content{
     margin-left:calc(50vw - 683px);
 }
 
-/**********************/
-/**** Logo Marquee ****/
-/**********************/
-
-
-body:not(.fl-builder-edit) .marquee {
-  --gap: 134px;
-  position: relative;
-  display: flex;
-  overflow: hidden;
-  user-select: none;
-  gap: var(--gap);
-  min-width: 1980px;
+.action-carousel-row.img-feature .action-carousel-slider > .fl-col-content .fl-module-button{
+    margin-top: auto;
 }
 
-body:not(.fl-builder-edit) .marquee__content {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: space-around;
-  gap: var(--gap);
-  min-width: 100%;
+/*****************************/
+/*  START  :: Logo Marquee   */
+/*****************************/
+.maxwidth1366{
+    max-width: 1366px;
+    margin: 0 auto;
+    float: unset;
 }
-
-body.fl-builder-edit .marquee__content {
-    flex-direction: column;
+.scroller ul {
+    list-style: none;
 }
+.scroller,
+.marquee {
+    max-width: 100%;
+}
+.scroller[data-animated="true"],
+.marquee[data-animated="true"]{
+    overflow: hidden;
+}
+/* BB XL DESKTOP, and up */
+@media screen and (min-width: 2000px) {
+    .marquee[data-animated="true"]{
+        -webkit-mask: linear-gradient(
+            90deg, 
+            transparent, 
+            white 10%, 
+            white 90%, 
+            transparent
+        );
+        mask: linear-gradient(
+            90deg, 
+            transparent, 
+            white 10%, 
+            white 90%, 
+            transparent
+        );
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1234px;
+    }
+    
+}
+.marquee > .fl-col-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--scroll-gap);
+    padding: 0;
 
+    & > div {
+        border: 3px solid transparent;
+    }
+    & > div:first-child {
+        /* border: 3px solid red; */
+    }
+    & > div:last-child {
+        /* border: 3px solid lime; */
+    }
+}
+.marquee.logos {
+    --scroll-gap: 120px;
+}
+.marquee.logos .fl-photo img {
+    border-radius: 0;
+    box-shadow: none;
+    height: 40px;
+    width: auto;
+}
+.marquee.logos {
+    --scroll-gap: 120px;
+}
+.marquee.testimonial {
+    --scroll-gap: 32px;
+}
+.marquee .marquee-item{
+    width: 370px;
+    height: 475px;
+}
+.marquee .marquee-item .small{
+    margin-top: auto;
+}
+body:not(.fl-builder-edit) figure.marquee-item{
+    border-radius: 24px;
+    overflow: hidden;
+    border: 0!important;
+}
+body:not(.fl-builder-edit) figure.marquee-item div,
+figure.marquee-item img{
+    height:100%!important;
+    width: 100%!important;
+    object-fit: cover;
+}
+body:not(.fl-builder-edit) .marquee[data-animated="true"] > .fl-col-content {
+    animation: 
+    scroll 
+    var(--_animation-duration, 60s) 
+    var(--_animation-direction, forwards) linear infinite;
+    flex-wrap: nowrap;
+    width: max-content;
+}
+.marquee.slow {
+    --_animation-duration: 140s;
+}
+.marquee.fast {
+    --_animation-duration: 40s;
+}
+.marquee.direction-right {
+    --_animation-direction: reverse;
+}
+.marquee.direction-left {
+    --_animation-direction: forwards;
+}
 @keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-  }
+    to {
+        transform: translate(calc(-50% - calc(var(--scroll-gap, 0px)/2)));
+    }
 }
 
-body:not(.fl-builder-edit) .marquee__content {
-  animation: scroll 30s linear infinite;
+body:not(.fl-builder-edit) .marquee[data-animated="loading"] > .fl-col-content {
+    flex-wrap: nowrap;
+    width: max-content;
+
+    .logo img {
+        min-width: 200px;
+    }
 }
 
-.marquee--hover-pause:hover .marquee__content {
-  animation-play-state: paused;
+.logo img {
+    border-radius: 0;
+    box-shadow: none;
+    max-width: unset;
+    width: auto;
+} 
+
+.ticker-text p {
+    font-family: var(--font-headline-sans);
+    font-size: 254px !important;
+    font-size: 15.88rem !important;
+    font-weight: 900 !important;
+    line-height: 1;
+    text-transform: uppercase;
 }
 
-.marquee__content .logo{
-    height:74px;
-    flex-shrink: 0;
+.row--background-marquee .foreground {
+    position: relative;
+}
+body:not(.fl-builder-edit) .marquee.background {
+    position: absolute;
+    left:0;
+    right: 0;
+    z-index: 0;
+
+    & > .fl-col-content {
+        width: max-content;
+    }
 }
 
-.marquee__content .logo.first{
-    padding: 15px 0;
+/* MOBILE */
+@media only screen and (max-width: 768px) {
+    .ticker-text p {
+        font-size: 124px !important;
+        font-size: 7.75rem !important;
+    }
+    .marquee .marquee-item{
+        width: 300px;
+        height: 340px;
+    }
+    body:not(.fl-builder-edit) figure.marquee-item{
+        border-radius: 16px;
+    }
+    .marquee.testimonial {
+        --scroll-gap: 16px;
+    }
+    .marquee.testimonial .fl-rich-text.large p{
+        font-size: 18px;
+        font-size: 1.13rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 29px;
+        line-height: 1.81rem;
+    }
 }
-
-.marquee__content .logo.second{
-    padding: 20px 0;
-}
-
-
-.marquee__content .logo .fl-photo-content,
-.marquee__content .logo img{
-    height:100%;
-    width:auto;
-}
-
+/*****************************/
+/*  END    :: Logo Marquee   */
+/*****************************/
 
 
 /******************************/
@@ -366,6 +521,13 @@ body:not(.fl-builder-edit) .video-carousel-row > .fl-row-content-wrap > .fl-row-
     .overlap-carousel-row .slider-header{
         justify-content: flex-start;
     }
+    /**********************/
+    /**** Taxtinomials ****/
+    /**********************/
+
+    .action-carousel-slide{
+        width:425px!important;
+    }
 
 }
 @media only screen and (max-width: 992px) {
@@ -376,6 +538,7 @@ body:not(.fl-builder-edit) .video-carousel-row > .fl-row-content-wrap > .fl-row-
 
     .action-carousel-slide{
         width:350px!important;
+        min-height: 400px;
     }
 
     /********************/
@@ -416,20 +579,24 @@ body:not(.fl-builder-edit) .video-carousel-row > .fl-row-content-wrap > .fl-row-
 
     .action-carousel-slide{
         width:calc(100vw - 36px)!important;
-        max-width: 306px;
+        max-width: 340px;
+        min-height: 340px;
+    }
+    .action-carousel-slide .fl-module-info-box{
+        width:100%;
     }
     /************************/
     /**** Featured Image ****/
     /************************/
     .img-feature.action-carousel-row .action-carousel-slide{
         width:calc(100vw - 36px)!important;
-        max-width: 306px;
+        max-width: 336px;
     }
     .carousel-img,
     .carousel-img .fl-photo-content,
     .carousel-img .fl-photo-content img{
         width:100%;
-        height:260px;
+        height:240px;
         object-fit: cover;
     }
     .small-reverse .slider-header{

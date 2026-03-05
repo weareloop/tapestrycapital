@@ -13,7 +13,15 @@
 ***************/
 
 
-
+@font-face {
+    font-family: 'Chap';
+    src:url('../fonts/Chap-Semibold.ttf') format('ttf'),
+        url('../fonts/Chap-Semibold.woff2') format('woff2'),
+        url('../fonts/Chap-Semibold.woff') format('woff'),
+        url("../fonts/Chap-Semibold.eot") format('embedded-opentype');
+    font-weight: 600;
+    font-style: normal;
+}
 
 /********************/
 /* Global Variables */
@@ -44,28 +52,29 @@
     --content-padding-bottom: 50px;
     
     /* COLORS */
-    --black: #000;
+    --blue-medium: #6DC4DD;
+    --black: #202020;
     --white: #fff;
-    --gray: #aaa;
-    --light: #ddd;
-    
-    --color1: #025C6E;
-    --color2: #C8EFE8;
+    --blue-light: #C0ECFA;
+    --blue-dark: #004385;
+    --orange-tapestry : #FF2800;
+    --green-light: #DFF6C9;
+    --gray-light: #F4F4F0;
+    --white-warm: #FAFAF8;
+    --orange-light: #FFD5C1;
+    --orange-medium: #FF995C;
+    --orange-dark: #EF5A02;
     
 
     /* FONTS */
-    --font-headline: 'Barlow',sans-serif;
-    --font-content: 'Barlow',sans-serif;
+    --font-headline: 'Chap',sans-serif;
+    --font-content: 'Figtree',sans-serif;
 
     /* ICONS */
-    --arrow-white: url(/wp-content/uploads/arrow-right-white.svg);
-    --arrow-blue:  url(/wp-content/uploads/arrow-right-blue.svg);
-
-    --arrow: url(/wp-content/uploads/arrow.svg);
-    --arrow-diagonal: url(/wp-content/uploads/arrow-diagonal.svg);
-    --caret: url(/wp-content/uploads/caret.svg);
-    --minus: url(/wp-content/uploads/action-minus.svg);
-    --plus: url(/wp-content/uploads/action-plus.svg);
+    --arrow-white: url(/wp-content/uploads/Right-Arrow-White.svg);
+    --arrow-blue:  url(/wp-content/uploads/Right-Arrow-Blue.svg);
+    --arrow-black:  url(/wp-content/uploads/Right-Arrow-Black.svg);
+    --arrow-red:  url(/wp-content/uploads/Right-Arrow-Red.svg);
 
     --viewportWidth: calc(100vw - var(--scrollbarWidth));
 }
@@ -214,51 +223,52 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 h1, .h1, .h1 p, .h1 .fl-heading {
     font-family: var(--font-headline);
-    font-size: 88px;
-    font-size: 5.5rem;
+    font-size: 72px;
+    font-size: 4.5rem;
     font-style: normal;
-    font-weight: normal;
-    letter-spacing: 0;
-    line-height: 88px;
-    line-height: 5.5rem;
+    font-weight: 600;
+    line-height: 78px;
+    line-height: 4.88rem;
 }
 
 h2, .h2, .h2 p, .h2 .fl-heading {
     font-family: var(--font-headline);
-    font-size: 56px;
-    font-size: 3.5rem;
+    font-size: 50px;
+    font-size: 3.13rem;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 600;
     line-height: 56px;
     line-height: 3.5rem;
-    letter-spacing: 0;
 }
 
 h3, .h3, .h3 p, .h3 .fl-heading {
     font-family: var(--font-content);
+    font-style: normal;
     font-weight: 700;
-    font-size: 36px;
-    font-size: 2.25rem;
-    line-height: 42px; 
-    line-height: 2.63rem; 
+    font-size: 38px;
+    font-size: 2.38rem;
+    line-height: 45px; 
+    line-height: 2.81rem; 
 }
 
 h4, .h4, .h4 p, .h4 .fl-heading {
     font-family: var(--font-content);
+    font-style: normal;
     font-weight: 700;
-    font-size: 26px;
-    font-size: 1.63rem;
-    line-height: 34px;
-    line-height: 2.13rem;
+    font-size: 28px;
+    font-size: 1.75rem;
+    line-height: 36px;
+    line-height: 2.25rem;
 }
 
 h5, .h5, .h5 p, .h5 .fl-heading {
     font-family: var(--font-content);
-    font-weight: 700;
-    font-size: 22px;
-    font-size: 1.38rem;
-    line-height: 34px;
-    line-height: 2.13rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    font-size: 1.75rem;
+    line-height: 36px;
+    line-height: 2.25rem;
 }
 
 p, .p, ul, ol {
@@ -298,16 +308,16 @@ ol + p, ol + ul, ol + ol {
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 28px; 
-    line-height: 1.75rem; 
+    line-height: 26px; 
+    line-height: 1.63rem; 
 }
 
 blockquote p {
     font-family: var(--font-content);
-    font-size: 25px;
-    font-size: 1.56rem;
+    font-size: 26px;
+    font-size: 1.63rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 37px;
     line-height: 2.31rem;
 }
@@ -367,8 +377,10 @@ span.underline_anim:hover,
     animation: 0.25s underline;
 }
 
-
-
+@keyframes underline_arrow {
+    from {background-size: 0% 1px;}
+    to {background-size:calc(100% - var(--btn-icon-gap)) 1px;}
+}
 
 @keyframes underline {
     from {background-size: 0% 1px;}
@@ -378,14 +390,15 @@ span.underline_anim:hover,
 
 
 /* Number Stat */
-.number_stat .fl-number-string {
+.number_stat .fl-number .fl-number-text .fl-number-string,
+.number_stat .fl-number .fl-number-text .fl-number-string span{
     font-family: var(--font-headline);
-    font-size: 68px;
-    font-size: 4.25rem;
-    line-height: 68px;
-    line-height: 4.25rem;
+    font-size: 80px;
+    font-size: 5rem;
+    line-height: 110px;
+    line-height: 6.88rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 
@@ -397,7 +410,7 @@ span.underline_anim:hover,
 
 :root {
     /* --btn-icon-gap: var(--Sizing-Units-2XS); */
-    --btn-icon-gap: 10px;
+    --btn-icon-gap: 12px;
     --btn-icon-gap-hover: 20px;
 }
 
@@ -416,7 +429,8 @@ div.wpforms-container-full button.wpforms-submit,
     font-size: 1.13rem;
     font-style: normal;
     font-weight: 700;
-    line-height: normal;
+    line-height: 22px;
+    line-height: 1.38rem;
 }
 
 /* separates styles for buttons with backgrounds */
@@ -424,8 +438,7 @@ div.wpforms-container-full button.wpforms-submit,
 .button-branded a.fl-button,
 div.wpforms-container-full .wpforms-form button.wpforms-submit,
 a.button-branded { 
-    /* background: none; */
-    padding: 20px 40px;
+    padding: 17px 32px;
     border-radius: var(--border-radius-btn);
     transition: all .25s ease;
 }
@@ -439,30 +452,6 @@ a.fl-button span {
     gap: var(--btn-icon-gap);
 }
 
-.cta_button a.fl-button {
-    font-family: var(--font-content);
-    font-size: 19px;
-    font-size: 1.19rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    padding:20px 40px;
-    border-radius: var(--border-radius-btn);
-    border:transparent;
-    transition:all .15s ease;
-}
-
-.cta_button a.fl-button:after {
-    font-family: 'Font Awesome 5 Pro';
-    content:"\f178";
-    font-weight: 500;
-    padding-left: 10px;
-    position: relative;
-    top: 1px;
-    transition:all .25s ease;
-    display:inline-block;
-}
-
 a.uabb-creative-button {transition: all .25s ease;}
 
 /* sets hover state for most buttons */
@@ -474,7 +463,7 @@ a.uabb-creative-button {transition: all .25s ease;}
 a.button-branded:hover,
 a.button-branded:focus {
     /* transform: scale(1.05); */
-    transform: scale3d(1.05, 1.05, 1.05); /* testing performance of scale on hover */
+    transform: scale3d(1.2, 1.2, 1.2); /* testing performance of scale on hover */
 }
 
 /* sets default transition for most buttons */
@@ -541,20 +530,23 @@ a.buttonlink {
     background-color: inherit;
     border: none;
     border-radius: 0;
-    display: inline-flex;
-    /* gap: 12px; */
     padding: 0;
-    padding-bottom: 2px; /* extra spacing between text and underline */
+    padding-bottom: 0px; /* extra spacing between text and underline */
     padding-right: var(--btn-icon-gap-hover); /* apply padding as far as the arrow goes, to avoid glitchiness on hover */
-
     text-decoration: none;
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
     background-position: bottom left;
     background-size: calc(100% - var(--btn-icon-gap)) 1px; /* minus 12px for the icon's rest state */
-    transition: background-size 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
     display:inline;
     font-weight:700;
+}
+
+.fl-builder-content .buttonlink.noarrow a.fl-button,
+.fl-builder-content a.buttonlink.noarrow{
+    padding-right: 0;
+    background-size: 100% 1px;
 }
 
 .fl-builder-content .buttonlink a.fl-button span {
@@ -566,10 +558,15 @@ a.buttonlink {
     line-height: 0; /* removes odd extra gap below a */
 }
 
+.fl-builder-content .buttonlink.noarrow a.fl-button:hover,
+.fl-builder-content a.buttonlink.noarrow:hover {
+    text-decoration: none;
+    animation: underline 0.3s ease;
+}
 .fl-builder-content .buttonlink a.fl-button:hover,
 .fl-builder-content a.buttonlink:hover {
     text-decoration: none;
-    background-size: 100% 1px; /* full 100% for the icon's active state */
+    animation: underline 0.3s ease forwards;
 }
 
 a.buttonlink:not(.noarrow)::after,
@@ -595,23 +592,11 @@ button.wpforms-submit::after {
     background-image: var(--arrow);
     background-size:contain;
     background-repeat:no-repeat;
-    height: 13px; /* px won't scale, but rem is glitchy when button is scaled on hover */
-    /* height: 0.79rem; */
+    height: 13px;
     position: relative;
-    /* top: 5px;
-    top: 0.31rem; */
     transition: all .25s ease-in-out;;
     width: 16px;
-    /* width: 1rem; */
     display: inline-flex;
-    /* transform: translateX(12px); */
-
-    /* version using mask below */
-    /* background-color: currentColor;
-    -webkit-mask: var(--arrow) no-repeat 0% 0%;
-    mask: var(--arrow) no-repeat 0% 0%;
-    -webkit-mask-size: contain;
-    mask-size: contain; */
 }
 
 a.buttonlink.arrow_left::before,
@@ -629,34 +614,42 @@ button.buttonlink.arrow_right::after{
     margin-left: .75rem; */
 }
 
-/* buttons w icons – colors
-Arrow Brown 
-a.arrow_brown.arrow_left::before,
-button.arrow_brown.arrow_left::before,
-a.arrow_brown.arrow_right::after,
-button.arrow_brown.arrow_right::after,
-.arrow_brown.arrow_left a.fl-button span::before,
-.arrow_brown.arrow_right a.fl-button span::after
-{background-image:var(--arrow-dark);}
+/* buttons w icons – colors */
 
-a.arrow_black.arrow_left::before,
-button.arrow_black.arrow_left::before,
-a.arrow_black.arrow_right::after,
-button.arrow_black.arrow_right::after,
+/* Arrow Color */
+.arrow_left a.fl-button span::before,
+.arrow_right a.fl-button span::after{
+    display: block;
+    content:'';
+    width: 17px;
+    height: 13px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.arrow_red.arrow_left a.fl-button span::before,
+.arrow_red.arrow_right a.fl-button span::after
+{background-image:var(--arrow-red);}
+
+.arrow_blue.arrow_left a.fl-button span::before,
+.arrow_blue.arrow_right a.fl-button span::after
+{background-image:var(--arrow-blue);}
+
 .arrow_black.arrow_left a.fl-button span::before,
 .arrow_black.arrow_right a.fl-button span::after
-{background-image:var(--arrow-dark-alt);}
+{background-image:var(--arrow-black);}
 
-Arrow White 
-a.arrow_white.arrow_left::before,
-a.arrow_white.arrow_right::after,
-button.arrow_white.arrow_left::before,
-button.arrow_white.arrow_right::after,
 .arrow_white.arrow_left a.fl-button span::before,
 .arrow_white.arrow_right a.fl-button span::after
-{background-image:var(--arrow-light);} */
+{background-image:var(--arrow-white);} 
 
+.uabb-infobox-title{
+    margin-bottom: 0!important;
+}
 
+.uabb-photo-img{
+
+}
 
 
 
@@ -690,15 +683,6 @@ button.arrow_white.arrow_right::after,
     .fullwidth.marginright > div, .fullwidth .marginright { padding-right: var(--content-padding);} 
 
 
-    /* Number Stat */
-    .number_stat .fl-number-string {
-        font-size: 64px;
-        font-size: 4rem;
-        line-height: 64px;
-        line-height: 4rem;
-    }
-
-
 
 }
 
@@ -724,31 +708,31 @@ button.arrow_white.arrow_right::after,
     }
 
     h2, .h2, .h2 p, .h2 .fl-heading {
-        font-size: 50px;
-        font-size: 3.13rem;
-        line-height: 50px;
-        line-height: 3.13rem;
+        font-size: 46px;
+        font-size: 2.88rem;
+        line-height: 56px;
+        line-height: 3.5rem;
     }
 
     h3, .h3, .h3 p, .h3 .fl-heading {
-        font-size: 30px;
-        font-size: 1.88rem;
-        line-height: 36px;
-        line-height: 2.25rem;
+        font-size: 36px;
+        font-size: 2.25rem;
+        line-height: 44px;
+        line-height: 2.75rem;
     }
 
     h4, .h4, .h4 p, .h4 .fl-heading {
-        font-size: 24px;
-        font-size: 1.5rem;
-        line-height: 30px;
-        line-height: 1.88rem;
+        font-size: 27px;
+        font-size: 1.69rem;
+        line-height: 34px;
+        line-height: 2.13rem;
     }
 
     h5, .h5, .h5 p, .h5 .fl-heading {
         font-size: 21px;
         font-size: 1.31rem;
-        line-height: 33px;
-        line-height: 2.06rem;
+        line-height: 30px;
+        line-height: 1.88rem;
     }
 
     p, .p, ul, ol {
@@ -762,26 +746,33 @@ button.arrow_white.arrow_right::after,
     .large ol, ol.large, .large ul, ul.large {
         font-size: 21px;
         font-size: 1.31rem;
-        line-height: 33px;
-        line-height: 2.06rem;
+        line-height: 30px;
+        line-height: 1.88rem;
     }
 
     .small, p.small, p .small, .small p,
     .small ol, ol.small, .small ul, ul.small {
         font-size: 16px;
         font-size: 1rem;
-        line-height: 28px;
-        line-height: 1.75rem;
+        line-height: 24px;
+        line-height: 1.5rem;
     }
 
     blockquote p {
-        font-size: 23px;
-        font-size: 1.44rem;
-        line-height: 33px;
-        line-height: 2.06rem;
+        font-size: 24px;
+        font-size: 1.5rem;
+        line-height: 35px;
+        line-height: 2.19rem;
     }
- 
 
+     /* Number Stat */
+    .number_stat .fl-number .fl-number-text .fl-number-string,
+    .number_stat .fl-number .fl-number-text .fl-number-string span {
+        font-size: 80px;
+        font-size: 5rem;
+        line-height: 95px;
+        line-height: 5.94rem;
+    }
 }
 
 
@@ -801,17 +792,17 @@ button.arrow_white.arrow_right::after,
     /**************/
 
     h1, .h1, .h1 p, .h1 .fl-heading {
-        font-size: 50px;
-        font-size: 3.13rem;
-        line-height: 50px;
-        line-height: 3.13rem;
+        font-size: 48px;
+        font-size: 3rem;
+        line-height: 56px;
+        line-height: 3.5rem;
     }
 
     h2, .h2, .h2 p, .h2 .fl-heading {
         font-size: 40px;
         font-size: 2.5rem;
-        line-height: 40px;
-        line-height: 2.5rem;
+        line-height: 48px;
+        line-height: 3rem;
     }
 
     h3, .h3, .h3 p, .h3 .fl-heading {
@@ -821,37 +812,56 @@ button.arrow_white.arrow_right::after,
         line-height: 2.25rem;
     }
 
+    h4, .h4, .h4 p, .h4 .fl-heading {
+        font-size: 22px;
+        font-size: 1.38rem;
+        line-height: 30px;
+        line-height: 1.88rem;
+    }
+
     h5, .h5, .h5 p, .h5 .fl-heading {
         font-size: 20px;
         font-size: 1.25rem;
-        line-height: 31px;
-        line-height: 1.94rem;
+        line-height: 30px;
+        line-height: 1.88rem;
     }
 
     .large, p.large, p .large, .large p,
     .large ol, ol.large, .large ul, ul.large {
         font-size: 20px;
         font-size: 1.25rem;
-        line-height: 31px;
-        line-height: 1.94rem;
+        line-height: 30px;
+        line-height: 1.88rem;
     }
 
     blockquote p {
-        font-size: 20px;
-        font-size: 1.25rem;
-        line-height: 29px;
-        line-height: 1.81rem;
+        font-size: 22px;
+        font-size: 1.38rem;
+        line-height: 33px;
+        line-height: 2.06rem;
     }
 
     /* Number Stat */
-    .number_stat .fl-number-string {
-        font-size: 52px;
-        font-size: 3.25rem;
-        line-height: 55px;
-        line-height: 3.44rem;
+    .number_stat .fl-number .fl-number-text .fl-number-string,
+    .number_stat .fl-number .fl-number-text .fl-number-string span {
+        font-size: 60px;
+        font-size: 3.75rem;
+        line-height: 70px;
+        line-height: 4.38rem;
     }
-
-
-
-
+    .fl-builder-content .fl-module-button a.fl-button,
+    .fl-builder-content .fl-module-button-group a.fl-button,
+    div.wpforms-container-full button.wpforms-submit,
+    .button-branded {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 19px;
+        line-height: 1.19rem;
+    }
+    .fl-module-button:not(.buttonlink) a.fl-button,
+    .button-branded a.fl-button,
+    div.wpforms-container-full .wpforms-form button.wpforms-submit,
+    a.button-branded { 
+        padding: 12px 26px;
+    }
 }

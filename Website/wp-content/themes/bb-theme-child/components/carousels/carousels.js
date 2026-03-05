@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
     /* Carousel - Testimonial - Featured Image Cards */
     /*************************************************/
 
-    $("body:not(.fl-builder-edit) .action-carousel-slider .fl-col-content").each(function(){
+    $("body:not(.fl-builder-edit) .action-carousel-row:not(.img-feature) .action-carousel-slider .fl-col-content").each(function(){
         //console.log("action carousel running");
         $(this).slick({
         dots: true,
@@ -16,8 +16,32 @@ jQuery(document).ready(function ($) {
         draggable:false,
         appendDots: $(this).parents('.action-carousel-row').find(".slider-dot"),
         appendArrows: $(this).parents('.action-carousel-row').find(".slider-ctl"),
-        prevArrow:'<button type="button" class="slick-prev hidefocus"><img src="/wp-content/uploads/Group-11193.svg" alt="arrow left"></button>',
-        nextArrow:'<button type="button" class="slick-next hidefocus"><img src="/wp-content/uploads/Group-11194.svg" alt="arrow right"></button>',
+        prevArrow:'<button type="button" class="slick-prev hidefocus"><img src="/wp-content/uploads/circle-arrow-left-red.svg" alt="arrow left"></button>',
+        nextArrow:'<button type="button" class="slick-next hidefocus"><img src="/wp-content/uploads/circle-arrow-right-red.svg" alt="arrow right"></button>',
+        responsive: [
+            {
+            breakpoint: 769,
+            settings: {
+                draggable:false,
+            }
+            }
+        ]
+        });
+    });
+
+    $("body:not(.fl-builder-edit) .action-carousel-row.img-feature .action-carousel-slider .fl-col-content").each(function(){
+        //console.log("action carousel running");
+        $(this).slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        adaptiveHeight: false,
+        variableWidth: true,
+        draggable:false,
+        appendDots: $(this).parents('.action-carousel-row').find(".slider-dot"),
+        appendArrows: $(this).parents('.action-carousel-row').find(".slider-ctl"),
+        prevArrow:'<button type="button" class="slick-prev hidefocus"><img src="/wp-content/uploads/circle-arrow-left-white.svg" alt="arrow left"></button>',
+        nextArrow:'<button type="button" class="slick-next hidefocus"><img src="/wp-content/uploads/circle-arrow-right-white.svg" alt="arrow right"></button>',
         responsive: [
             {
             breakpoint: 769,
@@ -87,19 +111,51 @@ jQuery(document).ready(function ($) {
         }
     ) }, 100);
 
-    /********************/
-    /*  Marquee Ticker  */
-    /********************/
-    $("body:not(.fl-builder-edit) .marquee__content").each(function(){
-        var second = $(this).clone();
-        second.attr('aria-hidden', 'true');
-        second.appendTo($(this).parents('.marquee'));
-        /* developer append more, if marquee is having big gap or not scrolling*/
-        var third = $(this).clone();
-        third.attr('aria-hidden', 'true');
-        third.appendTo($(this).parents('.marquee'));
+    /*****************************/
+    /*  START :: Marquee Ticker  */
+    /*****************************/
+    const marquees = document.querySelectorAll("body:not(.fl-builder-edit) .marquee");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        // console.log('user does NOT prefer reduced motion, proceed with animation');
+        initMarquee();
+    }
+    else {
+        // console.log('user DOES prefer reduced motion, do NOT proceed with animation');
+    }
+    function initMarquee() {
+        marquees.forEach(marquee => {
+            // data-animated=loading needs to be set initially to calculate marqueeContentWidth
+            marquee.setAttribute("data-animated", 'loading');
+            const marqueeWidth = marquee.offsetWidth;
 
-    });
+            const marqueeInner = marquee.querySelector(".fl-col-content");
+            const marqueeContentWidth = marqueeInner.offsetWidth;
+            // console.log('marqueeContentWidth', marqueeContentWidth, 'marqueeWidth', marqueeWidth);
+
+            if (marqueeContentWidth > marqueeWidth) {
+                // if marqueeContentWidth is wide enough for the carousel to not be buggy 
+                let marqueeContent = Array.from(marqueeInner.children);
+
+                marqueeContent.forEach((item) => {
+                    const duplicatedItem = item.cloneNode(true);
+                    // hide duplicated children from screen readers
+                    duplicatedItem.setAttribute('aria-hidden', true);
+                    marqueeInner.appendChild(duplicatedItem);
+                });
+
+                // data-animated=true needs to be set now for animation
+                marquee.setAttribute("data-animated", true);
+            }
+            else {
+                // marqueeContentWidth is not wide enough to support carousel, therefore disable
+                marquee.setAttribute("data-animated", false);
+            }
+            
+        });
+    }
+    /*****************************/
+    /*  END   :: Marquee Ticker  */
+    /*****************************/
     /******************/
     /* VIdeo Carousel */
     /******************/
