@@ -43,19 +43,27 @@ header.fl-page-header {
     z-index: 999;
     transition:all .25s ease;
     background:transparent;
-    background: #aaa;
     height:var(--header-height);
-    top:0;
+    top:46px;
 }
 
 header.fl-page-header .header_inner {
-    padding: 0 var(--content-padding);
-    max-width: 1366px;
+    /* padding: 12px 21px 12px 46px; */
+    padding: 0 21px 0 46px;
+    /* max-width: 1366px; */
+    max-width: 1314px;
     margin: auto;
     display: flex;
     gap: 0;
-    align-content: flex-start;
+    align-content: center;
     flex-wrap: wrap;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+    justify-content: space-between;
+    align-items: center;    
+    position: relative;
+        border-top-right-radius: 0;
 }
 
 header.fl-page-header.init {
@@ -66,6 +74,39 @@ header.fl-page-header.init {
 body.admin-bar header.fl-page-header {
     margin-top: 32px;
 }
+
+
+
+.header_inner .wantto {
+    position: absolute;
+    top: -34px;
+    right: 0;
+    background: var(--orange-light);
+    border: 0;
+    color: var(--black);
+    font-family: Figtree;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 0 !important;
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    height: 34px;
+    padding: 0 26px;
+    z-index: -1;
+}
+
+.header_inner .wantto:after {
+    content:"";
+    width:9px;
+    height:9px;
+    background:url(/wp-content/uploads/Right-Arrow.svg) center center / contain no-repeat;
+    margin-left:18px;
+    display: inline-block;
+}
+
+
 
 
 
@@ -81,27 +122,27 @@ body.admin-bar header.fl-page-header {
 
 
 #menu-main {
-    width:100%;
+    /* width:100%; */
     height: 100%;
     position: relative;
     z-index: 1;
-    background: #666;
 }
 #menu-mobile-primary {display:none}
 
 #menu-main .menu-desktop {
     list-style: none;
-    gap: 36px;
+    gap: 30px;
     display: flex;
     margin: auto;
-    padding:0;
+    padding:12px 0;
     align-items: end;
     position: relative;
+    align-items: center;
 }
 #menu-main .menu-desktop >li.mainmenu_item.mobile_only{
     display: none;
 }
-#menu-main .menu-desktop >li.mainmenu_item:first-child {margin-right:auto}
+#menu-main .menu-desktop >li.mainmenu_item:first-child {margin-right: 5px;}
 
 #menu-main .menu-desktop >li.mainmenu_button a {
     display:block;
@@ -129,26 +170,73 @@ body.admin-bar header.fl-page-header {
 #menu-main .menu-desktop >li.mainmenu_item >a,
 #menu-main .menu-desktop >li.has_submenu >button,
 #menu-main .menu-desktop >li.mainmenu_button a {
-    color: var(--white);
+    color: var(--black);
     padding: 5px 0;
     border: 0;
     position: relative;
     background:transparent;
     font-family: var(--font-content);
-    font-weight:initial;
-    font-size: 19px;
-    font-size: 1.19rem;
+    font-weight:600;
+    font-size: 17px;
+    font-size: 1.06rem;
     transition:all .25s ease;
     text-decoration:none;
     border-radius: 0;
     display:block;
-    line-height: 23px;
-    line-height: 1.44rem;
+    line-height: normal;
     border-bottom: 2px solid transparent;
 }
 
 #menu-main .menu-desktop >li  >button {padding-bottom:20px}
 body:not(.fl-builder-edit) .nofocus:focus {box-shadow:initial !important}
+
+
+#menu-secondary {
+    list-style: none;
+    gap: 10px;
+    display: flex;
+    padding: 0;
+    align-items: end;
+    position: relative;
+    align-items: center;
+}
+#menu-secondary >li.mainmenu_button a {
+    color: var(--white);
+    font-family: Figtree;
+    font-size: 18px;
+    font-size: 1.13rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding:14px 24px;
+    background:var(--orange-tapestry);
+    border-radius:100px;
+}
+
+#menu-secondary .trp-language-switcher-container.current-language-menu-item .trp-ls-language-name {
+    color:var(--white);
+}
+#menu-secondary .trp-language-switcher-container.current-language-menu-item> a {
+    background:var(--orange-tapestry);
+}
+#menu-secondary .trp-language-switcher-container> a {
+    background: var(--white-warm);
+    padding: 9px 0 0 9px;
+    height: 36px;
+    width: 36px;
+    border-radius: 100px;
+    display: block;
+    line-height: 0;
+}
+#menu-secondary .trp-language-switcher-container .trp-ls-language-name {
+    color:var(--black);
+    font-size: 14px;
+    font-size: 0.88rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+}
 
 
 
@@ -261,8 +349,11 @@ body:not(.fl-builder-edit) .nofocus:focus {box-shadow:initial !important}
     opacity:1;
 }
 
-#menu-main .sub-menu[data-depth='0'],
-.top-bar-nav .sub-menu[data-depth='0']{
+#menu-main .columns .sub-menu[data-depth='0'] {
+    display: flex;
+        gap:0;
+}
+#menu-main .sub-menu[data-depth='0'] {
     left: 50%;
     transform: translate(-50%, 0);
     position: absolute;
@@ -271,10 +362,10 @@ body:not(.fl-builder-edit) .nofocus:focus {box-shadow:initial !important}
     padding: 0;
     transition: all .25s ease;
     z-index: 1;
-    padding: 26px;
+    padding: 26px 24px;
     border-radius: 20px;
-    margin-top: 35px;
-    box-shadow: 0px 0px 20px rgb(0 0 0 / 20%);
+    margin-top: 66px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
     background: var(--white);
     white-space: nowrap;
     width: auto;
@@ -299,44 +390,77 @@ body:not(.fl-builder-edit) .nofocus:focus {box-shadow:initial !important}
 #menu-main .mainmenu_sub{
     flex:1;
 }
-#menu-main .sub-menu .mainmenu_item h3:before {
-    content:"";
-    width:16px;
-    height:28px;
-    border-radius:3px;
-    background:#C8EFE8;
-    display:inline-block;
-    margin-right:9px;
-    vertical-align: top;
-    position: relative;
-    top: -2px;
-    float: left;
-}
+
 #menu-main .sub-menu .mainmenu_item h3 {
-    display:inline-block;
+    display: inline-block;
     font-family: var(--font-content);
-    font-size: 16px;
-    font-size: 1rem;
+    font-size: 14px;
+    font-size: 0.88rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 28px;
-    line-height: 1.75rem;
+    line-height: normal;
+    letter-spacing: 2.52px;
     margin: 0 0px;
-    padding-bottom: 18px;
-    padding-top:0;
+    padding-bottom: 20px;
+    padding-top: 0;
     text-align: left;
-    color: var(--black);
+    color: var(--orange-tapestry);
+    text-transform: uppercase;
+    position: relative;
+    top: -8px;
 }
 
-#menu-main .sub-menu .mainmenu_item {min-width:260px;}
-#menu-main .sub-menu .mainmenu_item a, 
-.top-bar-nav .sub-menu .mainmenu_item a {
-    font-size: 18px;
-    font-size: 1.13rem;
+#menu-main .sub-menu .mainmenu_item {margin-bottom: 16px;}
+#menu-main .columns .sub-menu .mainmenu_item {
+    min-width:290px;
+}
+#menu-main .columns .sub-menu[data-depth='0']>.mainmenu_item:first-child {
+    padding-right:22px;
+    padding-left:0;
+    border:0;
+}
+#menu-main .columns .sub-menu[data-depth='0']>.mainmenu_item {
+    padding-left:22px;
+    border-left:1px solid var(--orange-tapestry)
+}
+
+#menu-main .has_submenu.columns .sub-menu[data-depth='1'] .mainmenu_item {
+    display:flex;
+    align-items: center;
+}
+#menu-main .has_submenu:not(.columns) .sub-menu[data-depth='0'] .mainmenu_item {
+    display:flex;
+    align-items: center;
+}
+
+
+#menu-main .has_submenu.columns .sub-menu[data-depth='0'] .mainmenu_item.mainmenu_sub:before {
+    display:none;
+}
+#menu-main .sub-menu .mainmenu_item:before {
+    content: "";
+    background: url(/wp-content/uploads/Arrow-Expand.svg) left center / contain no-repeat;
+    width: 22px;
+    height: 10px;
+    display: block;
+    min-width: 22px;
+}
+#menu-main .sub-menu .mainmenu_item a span {
+    color: var(--black);
+    font-family: var(--font-content);
+    font-size: 12px;
+    font-size: 0.75rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 29px;
-    line-height: 1.81rem;
+    line-height: normal;
+    display:block;
+}
+#menu-main .sub-menu .mainmenu_item a {
+    font-size: 17px;
+    font-size: 1.06rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
     padding: 0px 0px;
     color: var(--black);
     position: relative;
@@ -371,14 +495,12 @@ body:not(.fl-builder-edit) .nofocus:focus {box-shadow:initial !important}
 
 #menu-main .menu-desktop li.mainmenu_item,
 .top-bar-nav .menu-desktop li.mainmenu_item {    
-    margin: 0;
+    /* margin: 0; */
     height: 100%;
     position: relative;
 }
 
-#menu-main .menu-desktop li.mainmenu_item {
-    margin-bottom:0;
-}
+
 
 #menu-main ul.sub-menu, 
 .top-bar-nav ul.sub-menu{
@@ -401,13 +523,14 @@ body:not(.fl-builder-edit) .nofocus:focus {box-shadow:initial !important}
 
 #menu-main .menu-desktop >li.mainmenu_item.mainmenu_home >a {
     padding: 0;
+    border: 0;
 }
 
 .mainmenu_home a {background:none}
 
 #menu-main .mainmenu_home >a img{
     height:100%;
-    max-height: 87px;
+    max-height: 58px;
 }
 
 #menu-main .menu-desktop >li.mainmenu_button.button a:after {
@@ -446,16 +569,16 @@ body:not(.fl-builder-edit) .nofocus:focus {box-shadow:initial !important}
     content: "\f078";
     display: inline-block;
     font-family: "Font Awesome 5 Pro";
-    font-size: 18px;
-    font-size: 1.13rem;
+    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 22px;
     line-height: 1.38rem;
-    font-weight: 400;
-    margin-left: 7px;
+    font-weight: 800;
+    margin-left: 10px;
     transition: all .25s ease;
     padding-bottom: 0px;
     margin-top: 1px;
-        color: var(--white);
+    color: var(--black);
 }
 
 
@@ -602,17 +725,28 @@ ul#menu-top-bar li button{
     padding: 0 0px;
 }
 
-ul#menu-top-bar >li.topbar_search a:after {
-    content: "\f002";
-    font-family: "Font Awesome 5 Pro";
-    /*
+/*
+https://tapestry2026.wpenginepowered.com/wp-content/uploads/search.svg
+*/
+#menu-secondary >li.topbar_search a {
+    font-size:0;
+    color:transparent;
+    background-color:var(--white-warm);
+    border-radius:100px;
+    padding:10px;
+    width:36px;
+    height:36px;
+    display:block;
+    position: relative;
+}
+#menu-secondary >li.topbar_search a:after {
     content:"";
-    background:url(/wp-content/uploads/Icon_feather-search.svg) center center / contain no-repeat;
-    */
-    width:12px;
-    height:12px;
-    margin-left:8px;
-    
+    background:url(/wp-content/uploads/Icon-feather-search.svg) center center / contain no-repeat;
+    width:15px;
+    height:16px;
+    display: block;
+    position:absolute;
+    top:10px
 }
 
 ul#menu-top-bar >li:last-child a,

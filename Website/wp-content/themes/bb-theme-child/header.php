@@ -51,7 +51,8 @@ FLTheme::head();
             // Main menu HOME
             // Loads the main logo image from ACF "Site Options"
             if (strpos($classes,"mainmenu_home") !== false) {
-                $item_output = '<a id="menu-'.$item->ID.'-title" href="/"><img src="'.get_field('site_options_logo_main', 'option').'" alt="Home"></a>';
+                $siteoptions_logo =get_field('siteoptions_logo', 'option');
+                $item_output = '<a id="menu-'.$item->ID.'-title" href="/"><img src="'.$siteoptions_logo["site_options_logo_main"].'" alt="Home"></a>';
             }
             
             // Mega Menu image
@@ -107,28 +108,9 @@ FLTheme::head();
         <!-- Skip to content -->
         <a href="#fl-main-content" id="skip-to-content" class="fl-screen-reader-text">Skip to content</a>
 
+        
+
         <div class="header_inner">
-
-            <?php if ( is_nav_menu( "top-bar" ) ) { ?>
-            <!-- Quick Access Top Bar Menu -->
-            <nav id="top-bar" class="top-bar-nav" aria-labelledby="quick-access" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
-                <div>
-                    <h2 id="quick-access" class="sr-only">Quick Access</h2>
-                    <?php 
-                        wp_nav_menu( array( 
-                            'theme_location'    => 'bar', 
-                            'container'         =>'', 
-                            'walker' => new Push_Menu_Walker(),
-                            'items_wrap'        => '<ul id="%1$s" class="menu-quickaccess" aria-labelledby="nav-title">%3$s</ul>',
-                        )); 
-                    ?>
-                </div>
-
-            </nav>
-            <!-- Quick Access Top Bar Menu -->  
-            <?php } ?>
-
-
 
             <!-- Search -->
             <div class="searchbox" id="searchbox">
@@ -156,9 +138,16 @@ FLTheme::head();
 
 
 
+            
+            
+            <!-- Button above the menu -->
+            <button class="wantto">Want To Invest?</button>
+
             <!-- Main Menu -->
             <nav id="menu-main" aria-label="Site">
                 <h2 id="nav-title" class="sr-only">Site Navigation</h2>
+
+                
 
                 <!-- Mobile Menu -->
                 <ul id="menu-mobile-primary">
@@ -170,7 +159,7 @@ FLTheme::head();
                
 
 
-                <!-- Destop Menu -->
+                <!-- Desktop Menu -->
                 <?php 
                     wp_nav_menu( array( 
                         'theme_location'    => 'header', 
@@ -181,22 +170,28 @@ FLTheme::head();
                 ?>
                 <!-- Destop Menu -->
 
-                <?php 
-                /*
-                    // Render a different Mobile Menu when needed
-                    wp_nav_menu( array( 
-                        'menu'    => 57, 
-                        'container'         =>'', 
-                        'walker' => new Push_Menu_Walker(),
-                        'items_wrap'        => '<ul id="%1$s" class="menu-mobile" aria-labelledby="nav-title">%3$s</ul>',
-                    ));
-                */ 
-                ?>
-
             </nav>
-
-
             <!-- Main Menu -->
+    
+             <!-- Secondary Menu -->
+             <nav class="menu_secondary_wrapper" aria-labelledby="quick-access" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
+                 <div>
+                     <h2 id="quick-access" class="sr-only">Secondary Navigation</h2>
+                     <?php 
+                         wp_nav_menu( array( 
+                             'theme_location'    => 'bar', 
+                             'container'         =>'', 
+                             'walker' => new Push_Menu_Walker(),
+                             'items_wrap'        => '<ul id="%1$s" class="menu-quickaccess" aria-labelledby="nav-title">%3$s</ul>',
+                         )); 
+                     ?>
+                 </div>
+
+             </nav>
+             <!-- Secondary Menu -->
+
+
+            
 
         </div>
 
