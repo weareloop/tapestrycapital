@@ -6,12 +6,6 @@
     – uncomment if required variables NOT already set in main styles */
     :root {
         --img-placeholder: url(/wp-content/uploads/img-placeholder.jpg);
-        /* --content-margin-top : 26px; */
-        /* --border-radius-img: 24px;
-        --border-radius-img-mobile: 16px; */
-        --post-accent-color: #00FF91;
-        --post-accent-color-background: #247066;
-        --post-link-color: #002147;
         --post-max-width: 1010px;
         --post-max-width-full: 1222px;
     }
@@ -118,7 +112,6 @@ body:not(.fl-builder-edit) .single .herolargeheight div{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 36px;
-    font-weight: 400;
 }
 .post-content :is(ul,ol,p):not(:is(ul,ol) :is(ul,ol)):last-of-type {
     margin-bottom: 0;
@@ -175,18 +168,14 @@ body:not(.fl-builder-edit) .single .herolargeheight div{
     border-radius: var(-border-radius-img);
     margin: 0;
 } */
-.post-content p:has(> img),
-.post-content p:has(> .fluid-width-video-wrapper),
-.post-content .wp-caption {
-    max-width: var(--post-max-width-full);
-    width: 100% !important;
-}
+
 .post-content p > img,
 .post-content .wp-caption > img {
     border-radius: var(--border-radius-img);
     object-fit: cover;
     margin: 0;
     width: 100%;
+    height: 660px;
 }
 .post-content .wp-caption {
     background: inherit;
@@ -233,6 +222,26 @@ body:not(.fl-builder-edit) .single .herolargeheight div{
     background-color: var(--post-accent-color-background);
     color: var(--post-accent-color);
 }
+    @media only screen and (max-width: 992px) {
+        .post-content p > img,
+        .post-content .wp-caption > img {
+            height: 660px;
+        }
+        .post-content blockquote p{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+    @media only screen and (max-width: 992px) {
+        .post-content p > img,
+        .post-content .wp-caption > img {
+            height: 460px;
+        }
+        .post-content blockquote p{
+            padding-left: 36px;
+            padding-right: 36px;
+        }
+    }
     /* MOBILE, only */
     @media only screen and (max-width: 768px) {
         /* On mobile, set --border-radius-img variable to --border-radius-img-mobile value, 
@@ -240,6 +249,15 @@ body:not(.fl-builder-edit) .single .herolargeheight div{
         (Set to .post-content rather than :root so it only affects post-content, not universal) */
         .post-content{
             --border-radius-img: var(--border-radius-img-mobile);
+        }
+        .post-content p > img,
+        .post-content .wp-caption > img {
+            border-radius: 16px;
+            height: 280px;
+        }
+        .post-content blockquote p{
+            padding-left: 18px;
+            padding-right: 18px;
         }
     }
 
