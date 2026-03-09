@@ -76,6 +76,11 @@
     --arrow-black:  url(/wp-content/uploads/Right-Arrow-Black.svg);
     --arrow-red:  url(/wp-content/uploads/Right-Arrow-Red.svg);
 
+
+    --caret: url(/wp-content/uploads/caret.svg);
+    --minus: url(/wp-content/uploads/action-minus.svg);
+    --plus: url(/wp-content/uploads/action-plus.svg);
+
     --viewportWidth: calc(100vw - var(--scrollbarWidth));
 }
 /************************************/
