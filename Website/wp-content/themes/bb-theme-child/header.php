@@ -125,7 +125,7 @@ FLTheme::head();
                             </svg>
                             <form method="get" id="searchform" action="/">
                                 <label for="search_input" class="sr-only">Search Query</label>
-                                <input id="search_input" type="text" name="s" class="search_input" placeholder="Type your search here">
+                                <input id="search_input" type="text" name="s" class="search_input" placeholder="Search here">
                             </form>
                             <button class="search_button" form="searchform">Search</button>
                             <button id="search-close" class="search_close" aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></button>
@@ -149,11 +149,16 @@ FLTheme::head();
 
                 
 
+                <?php 
+                    $siteoptions_logo =get_field('siteoptions_logo', 'option');
+                ?>
                 <!-- Mobile Menu -->
                 <ul id="menu-mobile-primary">
-                    <li class="menu-mobile-home"><a href="/"><img src="<?=get_field('site_options_logo_main', 'option');?>" alt="Home"></a></li>
+                    <li class="menu-mobile-home"><a href="/"><img src="<?=$siteoptions_logo["site_options_logo_main"];?>" alt="Home"></a></li>
+                    <!--
                     <li class="menu-mobile-button"><button>Call To Action</button></li>
                     <li class="menu-mobile-hamb"><button class="mobile_menu_toggle" aria-pressed="false" aria-label="Open navigation menu">Menu</button></li>
+                    -->
                 </ul>
                 <!-- Mobile Menu -->
                
@@ -165,7 +170,8 @@ FLTheme::head();
                         'theme_location'    => 'header', 
                         'container'         =>'', 
                         'walker' => new Push_Menu_Walker(),
-                        'items_wrap'        => '<ul id="%1$s" class="menu-desktop" aria-labelledby="nav-title">%3$s</ul>',
+                        //'items_wrap'        => '<ul id="%1$s" class="menu-desktop" aria-labelledby="nav-title">%3$s</ul>',
+                        'items_wrap'        => '<ul id="menu-nav-main" class="menu-desktop" aria-labelledby="nav-title">%3$s</ul>',
                     )); 
                 ?>
                 <!-- Destop Menu -->
