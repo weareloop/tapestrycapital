@@ -603,7 +603,6 @@ div.filter-item .filter-item--label-title{
 }
 .posts-container .visual.post{
     opacity: 1;
-    cursor: pointer!important;
 }
 .postBox .imgBox{
     position: relative;
@@ -650,6 +649,7 @@ div.filter-item .filter-item--label-title{
     font-family: var(--font-content);
     font-weight: 400;
     color: var(--black);
+    display: none;
 }
 .postBottom > a{
     display: none;
@@ -673,12 +673,12 @@ div.filter-item .filter-item--label-title{
     font-size: 14px;
     font-size: .88rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 22px;
     line-height: 1.38rem;
     border-radius: 50px;
     background-color: var(--orange-light);
-    color: var(--black);
+    color: var(--orange-tapestry);
     margin-right:16px;
 }
 .posts .post .tags, .post-carrousel:not(.list) .tags
