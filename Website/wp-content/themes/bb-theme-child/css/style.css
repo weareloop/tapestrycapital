@@ -132,10 +132,12 @@ html, body {
     overflow-x: clip; /* instead of hidden, which glitches out position: sticky elements */
 }
 
+/*
 .fl-page-content {
     padding-top:var(--content-padding-top);
     padding-bottom:var(--content-padding-bottom);
 }
+*/
 
 .fl-row:not(.nopadding) >.fl-row-content-wrap >.fl-row-content {
     padding-left: var(--content-padding);
@@ -178,7 +180,7 @@ body:not(.fl-builder-edit) :focus {
     outline-width: 2px;
     outline-style: auto;
     outline-offset: 5px;
-    outline-color: var(--color1);
+    outline-color: var(--orange-tapestry);
     border-radius: 0;
 }
 

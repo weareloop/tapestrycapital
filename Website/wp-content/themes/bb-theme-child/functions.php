@@ -154,10 +154,11 @@ add_action('wp_enqueue_scripts', 'image_video', 999999);
 ////////////////
 wp_enqueue_style('hero-areas', get_stylesheet_directory_uri() . '/components/hero-areas/hero-areas.css', array(), rand());
 wp_enqueue_script('hero-areas',   get_stylesheet_directory_uri() . '/components/hero-areas/hero-areas.js', array('jquery'), rand());
+
 ///////////////
 // Animation //
 ///////////////
-include_once(dirname(__FILE__) . "/components/animation/animation.php");
+//include_once(dirname(__FILE__) . "/components/animation/animation.php");
 /*
 function animation()
 {

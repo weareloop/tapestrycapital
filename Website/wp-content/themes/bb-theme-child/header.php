@@ -51,7 +51,8 @@ FLTheme::head();
             // Main menu HOME
             // Loads the main logo image from ACF "Site Options"
             if (strpos($classes,"mainmenu_home") !== false) {
-                $item_output = '<a id="menu-'.$item->ID.'-title" href="/"><img src="'.get_field('site_options_logo_main', 'option').'" alt="Home"></a>';
+                $siteoptions_logo =get_field('siteoptions_logo', 'option');
+                $item_output = '<a id="menu-'.$item->ID.'-title" href="/"><img src="'.$siteoptions_logo["site_options_logo_main"].'" alt="Home"></a>';
             }
             
             // Mega Menu image
@@ -107,28 +108,9 @@ FLTheme::head();
         <!-- Skip to content -->
         <a href="#fl-main-content" id="skip-to-content" class="fl-screen-reader-text">Skip to content</a>
 
+        
+
         <div class="header_inner">
-
-            <?php if ( is_nav_menu( "top-bar" ) ) { ?>
-            <!-- Quick Access Top Bar Menu -->
-            <nav id="top-bar" class="top-bar-nav" aria-labelledby="quick-access" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
-                <div>
-                    <h2 id="quick-access" class="sr-only">Quick Access</h2>
-                    <?php 
-                        wp_nav_menu( array( 
-                            'theme_location'    => 'bar', 
-                            'container'         =>'', 
-                            'walker' => new Push_Menu_Walker(),
-                            'items_wrap'        => '<ul id="%1$s" class="menu-quickaccess" aria-labelledby="nav-title">%3$s</ul>',
-                        )); 
-                    ?>
-                </div>
-
-            </nav>
-            <!-- Quick Access Top Bar Menu -->  
-            <?php } ?>
-
-
 
             <!-- Search -->
             <div class="searchbox" id="searchbox">
@@ -143,7 +125,7 @@ FLTheme::head();
                             </svg>
                             <form method="get" id="searchform" action="/">
                                 <label for="search_input" class="sr-only">Search Query</label>
-                                <input id="search_input" type="text" name="s" class="search_input" placeholder="Type your search here">
+                                <input id="search_input" type="text" name="s" class="search_input" placeholder="Search here">
                             </form>
                             <button class="search_button" form="searchform">Search</button>
                             <button id="search-close" class="search_close" aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></button>
@@ -156,47 +138,66 @@ FLTheme::head();
 
 
 
+            
+            
+            <!-- Button above the menu -->
+            <button class="wantto">Want To Invest?</button>
+
             <!-- Main Menu -->
             <nav id="menu-main" aria-label="Site">
                 <h2 id="nav-title" class="sr-only">Site Navigation</h2>
 
+                
+
+                <?php 
+                    $siteoptions_logo =get_field('siteoptions_logo', 'option');
+                ?>
                 <!-- Mobile Menu -->
                 <ul id="menu-mobile-primary">
-                    <li class="menu-mobile-home"><a href="/"><img src="<?=get_field('site_options_logo_main', 'option');?>" alt="Home"></a></li>
+                    <li class="menu-mobile-home"><a href="/"><img src="<?=$siteoptions_logo["site_options_logo_main"];?>" alt="Home"></a></li>
+                    <!--
                     <li class="menu-mobile-button"><button>Call To Action</button></li>
                     <li class="menu-mobile-hamb"><button class="mobile_menu_toggle" aria-pressed="false" aria-label="Open navigation menu">Menu</button></li>
+                    -->
                 </ul>
                 <!-- Mobile Menu -->
                
 
 
-                <!-- Destop Menu -->
+                <!-- Desktop Menu -->
                 <?php 
                     wp_nav_menu( array( 
                         'theme_location'    => 'header', 
                         'container'         =>'', 
                         'walker' => new Push_Menu_Walker(),
-                        'items_wrap'        => '<ul id="%1$s" class="menu-desktop" aria-labelledby="nav-title">%3$s</ul>',
+                        //'items_wrap'        => '<ul id="%1$s" class="menu-desktop" aria-labelledby="nav-title">%3$s</ul>',
+                        'items_wrap'        => '<ul id="menu-nav-main" class="menu-desktop" aria-labelledby="nav-title">%3$s</ul>',
                     )); 
                 ?>
                 <!-- Destop Menu -->
 
-                <?php 
-                /*
-                    // Render a different Mobile Menu when needed
-                    wp_nav_menu( array( 
-                        'menu'    => 57, 
-                        'container'         =>'', 
-                        'walker' => new Push_Menu_Walker(),
-                        'items_wrap'        => '<ul id="%1$s" class="menu-mobile" aria-labelledby="nav-title">%3$s</ul>',
-                    ));
-                */ 
-                ?>
-
             </nav>
-
-
             <!-- Main Menu -->
+    
+             <!-- Secondary Menu -->
+             <nav class="menu_secondary_wrapper" aria-labelledby="quick-access" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
+                 <div>
+                     <h2 id="quick-access" class="sr-only">Secondary Navigation</h2>
+                     <?php 
+                         wp_nav_menu( array( 
+                             'theme_location'    => 'bar', 
+                             'container'         =>'', 
+                             'walker' => new Push_Menu_Walker(),
+                             'items_wrap'        => '<ul id="%1$s" class="menu-quickaccess" aria-labelledby="nav-title">%3$s</ul>',
+                         )); 
+                     ?>
+                 </div>
+
+             </nav>
+             <!-- Secondary Menu -->
+
+
+            
 
         </div>
 
