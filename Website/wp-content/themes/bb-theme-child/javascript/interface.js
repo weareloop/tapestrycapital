@@ -13,7 +13,12 @@ jQuery(document).ready(function( $ ) {
             if ($("h1:first a").length) $("h1:first a").focus()
             else $("h1:first").focus()
         },50)       
-    })
+    });
+
+    $("#menu-secondary .menu-mobile-hamb").html('<button class="mobile_menu_toggle" aria-pressed="false" aria-label="Open navigation menu">Menu</button>')
+
+    
+
 
     //Move scroll-top-top from BB to inside <main>
     $("#fl-to-top").appendTo("main");
@@ -163,7 +168,7 @@ jQuery(document).ready(function( $ ) {
 
     function mobile_menu_open() {
         $(".mobile_menu_toggle").attr("aria-pressed","true")
-        $("#menu-subtree-simple").slideDown({
+        $("#menu-nav-main").slideDown({
             start: function () {$(this).css({display: "flex"})},
             duration: 250}).addClass("expanded");
         $("body").addClass("mobile_menu_open");
@@ -171,7 +176,7 @@ jQuery(document).ready(function( $ ) {
     }
     function mobile_menu_close() {
         $(".mobile_menu_toggle").attr("aria-pressed","false");
-        $("#menu-subtree-simple").slideUp(250).removeClass("expanded");
+        $("#menu-nav-main").slideUp(250).removeClass("expanded");
         $("body").removeClass("mobile_menu_open");
         $("html").css("overflow",'initial');
         $(".has_submenu>button").attr('aria-expanded', function (i, attr) {
@@ -209,20 +214,20 @@ jQuery(document).ready(function( $ ) {
 		$(".search_wrap").removeClass("active");
 		$(".searchbox").removeClass("active");
 	}
-	$(".topbar_search button, .topbar_search a").on("click",function(){
+	$("#menu-secondary .topbar_search a").on("click",function(){
 		if ($(".searchbox").hasClass("active")) {   
             $(this).focus()
             searchClose()
         }
 		else {
             searchOpen();
-            setTimeout(function(){$("#search_input").focus()},50)
+            setTimeout(function(){$("#search_input").focus().addClass("hidefocus")},50)
             trapFocus(document.getElementById("searchbox"))
         }
 	})
 	$(".search_close").on("click",function(){ 
         searchClose()
-        setTimeout(function(){$(".topbar_search button").focus()},50)
+        setTimeout(function(){$(".topbar_search a").focus()},50)
     })
 
 
@@ -291,6 +296,22 @@ jQuery(document).ready(function( $ ) {
 
 
 
+
+    
+    $searchbox = $("#searchbox")
+    function searchbox_location(){
+        if ($(window).width()>991) {
+            if (!$(".header_inner >#searchbox").length)
+                $(".header_inner").prepend($searchbox);
+        }
+        else {
+            if (!$("#menu-nav-main #searchbox").length)
+                $("#menu-nav-main").prepend($searchbox);
+        }
+    }
+    searchbox_location()
+
+
     
     
 
@@ -303,6 +324,7 @@ jQuery(document).ready(function( $ ) {
         reset_menu_resize()
         scrolldirection()
         menu_main_fixed()
+        searchbox_location()
 	});	
 	
 	
