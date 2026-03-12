@@ -14,8 +14,9 @@
 
 :root {
     /* VARS */
-     --header-height: 130px;
-     --topbar-height: 39px;
+    --header-height: 130px;
+    --topbar-height: 39px;
+    --topbanner-height:41px;
 }
 
 a#fl-to-top {
@@ -36,6 +37,108 @@ a#skip-to-content {
 
 /* google reCaptcha Badge*/
 .grecaptcha-badge {    bottom: 75px !important;}
+
+
+
+
+/**************/
+/* Top Banner */
+/**************/
+body:not(.body_scrolled):not(.fl-builder-edit) header.fl-page-header.with_topbanner { 
+    transform: translateY(var(--topbanner-height));
+}
+
+#fl-main-content .fl-row-content-wrap >.fl-row-content:first-child  {transition:all .25s ease;}
+body:not(.body_scrolled):not(.fl-builder-edit) #fl-main-content.with_topbanner .fl-row-content-wrap >.fl-row-content:first-child  {
+    padding-top:var(--topbanner-height);
+}
+
+.menu_main_out header.fl-page-header {
+    transform:translateY(calc(0px - var(--header-height) - var(--topbanner-height)));
+}
+
+.menu_main_out header.fl-page-header.with_topbanner {
+    transform:translateY(calc(0px - var(--header-height) - var(--topbanner-height)));
+}
+body.fl-builder-edit .top_banner {display:none;}
+
+.top_banner_inner {
+    max-width:1366px;
+    /* margin-left:var(--content-padding); */
+    /* margin-right:var(--content-padding); */
+    margin:auto;
+    padding:10px 0;
+    height:var(--topbanner-height);
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.banner_text {
+    font-size: 16px;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    line-height: 1.38rem;
+    margin-top: 2px;
+}
+
+/* body_scrolled */
+.top_banner {
+    transition: all .2s ease;
+    transform: translateY(-100px);
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+body.admin-bar .top_banner {top:32px;}
+.top_banner.init {
+    transform: translateY(0);
+    
+}
+.top_banner {
+    background: var(--navy-blue);
+    transition: all .2s ease;
+    transform: translateY(-100px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    
+}
+
+.top_banner_close:is(:hover,:focus) {
+    background:transparent;
+    border:0;
+}
+.top_banner_close {
+    font-size:0;
+    color:transparent;
+    background:transparent;
+    border:0;
+}
+.top_banner_close:after {
+    content: "\f00d";
+    display: block;
+    font-family: "Font Awesome 5 Pro";
+    color:var(--black);
+    font-size: 30px;
+    font-weight: 100;
+}
+
+
+
+
+
+
+
+
+
 
 header.fl-page-header {
     position: fixed;
@@ -904,7 +1007,7 @@ ul#menu-top-bar {
 }
 .search_form_wrapper >img {padding-bottom:10px;}
 #searchform >label {color:var(--black);    padding: 0 12px;}
-#searchform input[type=text].search_input::placeholder {color:var(--black)}
+#searchform input[type=text].search_input::placeholder {color:#aaa}
 #searchform input[type=text].search_input {
     background: var(--white);
     border: 1px solid #aaa !important;
@@ -961,7 +1064,7 @@ body.search main .search_button {margin-top:1px;}
 
 .search_close:is(:hover,:focus),
 .joinus_close:is(:hover,:focus) {
-    border:1px solid black;
+    border:none !important;
 }
 
 .searchboxico {
@@ -992,20 +1095,33 @@ body.search main .search_button {margin-top:1px;}
 .social_networks {
     list-style: none;
     padding: 0;
-    margin: 20px 0 0;
+    margin: 50px 0;
     display: flex;
     gap: 26px;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .social_networks a{
     text-decoration: none !important;
-    color:var(--black) !important;
+    color:var(--white) !important;
     font-size:40px;
     font-size:2.5rem;
     background: none !important;
 }
+
+
+.ua-icon.ua-icon-x {
+    -webkit-mask-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20640%22%3E%3C!--!Font%20Awesome%20Free%20v7.2.0%20by%20%40fontawesome%20-%20https%3A%2F%2Ffontawesome.com%20License%20-%20https%3A%2F%2Ffontawesome.com%2Flicense%2Ffree%20Copyright%202026%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M453.2%20112L523.8%20112L369.6%20288.2L551%20528L409%20528L297.7%20382.6L170.5%20528L99.8%20528L264.7%20339.5L90.8%20112L236.4%20112L336.9%20244.9L453.2%20112zM428.4%20485.8L467.5%20485.8L215.1%20152L173.1%20152L428.4%20485.8z%22%2F%3E%3C%2Fsvg%3E');
+    mask-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20640%22%3E%3C!--!Font%20Awesome%20Free%20v7.2.0%20by%20%40fontawesome%20-%20https%3A%2F%2Ffontawesome.com%20License%20-%20https%3A%2F%2Ffontawesome.com%2Flicense%2Ffree%20Copyright%202026%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M453.2%20112L523.8%20112L369.6%20288.2L551%20528L409%20528L297.7%20382.6L170.5%20528L99.8%20528L264.7%20339.5L90.8%20112L236.4%20112L336.9%20244.9L453.2%20112zM428.4%20485.8L467.5%20485.8L215.1%20152L173.1%20152L428.4%20485.8z%22%2F%3E%3C%2Fsvg%3E');
+    mask-repeat: no-repeat;
+    mask-size: 50px, 50px;
+    width: 50px;
+    height: 50px;
+    background-color:var(--white) !important;
+    display: block;
+}
+
 
 
 
@@ -1014,12 +1130,59 @@ body.search main .search_button {margin-top:1px;}
 /**********/
 /* Footer */
 /**********/
+
 footer {
-    background: #999;
+    background: var(--orange-tapestry);
     color: var(--white);
-        padding-top: 50px;
+    padding-top: 96px;
+    padding-bottom:450px;
+    border-top-right-radius: 80px;
+    background-image:url(/wp-content/uploads/footer_decor2.svg);
+    background-position:center 150%;
+    background-size:contain;
+    background-repeat:no-repeat;
+
 }
 
+
+footer-quicklinks {
+    display: flex;
+    gap: 50px;
+    margin-top:30px;
+}
+
+footer-quicklinks a:hover {
+    text-decoration: none;
+    animation: 0.3s underline ease-in;
+    color:currentColor;
+}
+footer-quicklinks a {
+    color: var(--white);
+    font-size: 18px;
+    font-size: 1.13rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+    line-height: 2.5rem;
+    background-image: linear-gradient(var(--orange-medium), var(--orange-medium));
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 100% 1px;
+    transition: background-size 250ms ease-in-out;
+
+}
+
+footer .footer_h3 {
+    color: var(--white);
+    font-family: var(--font-content);
+    font-size: 28px;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    line-height: 2.25rem;
+    margin-top:40px;
+}
 
 footer .fl-builder-content {
     margin:0;
@@ -1031,53 +1194,29 @@ footer a {font-weight:700}
 
 .footer_row {
     display: flex;
-    flex-direction: row;
-    margin: auto;
-    gap: 78px;
+    gap: 60px;
     max-width: 1366px;
-    padding-bottom: 0px;
-    align-items: center;
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
+    align-items: flex-start;
     justify-content: space-between;
-    padding-left:var(--content-padding);
-    padding-right:var(--content-padding);
+}
+
+.footer_col.col2 h3 {
+    color:var(--orange-tapestry);
+    margin-bottom:16px;
+}
+
+.footer_col.col1 {
+    width: 60%;
 }
 .footer_col.col2 {
     width:100%;
-    max-width:600px;
-    padding:36px;
-    background: var(--white);
+    max-width:485px;
+    background: var(--orange-light);
     border-radius: 16px;
-    color: var(--black---black-text, #025C6E);
-    text-align:center;
-}
-
-.footer_col.col1 p {
-    font-size: 22px;
-    font-size: 1.38rem;
-    line-height: 34px;
-    line-height: 2.13rem;
-
-}
-
-.footer_col.col1 {   min-width: 200px; }
-.footer_col.col3 {   min-width: 218px; }
-
-.footer_col.col1 a {
-    font-size:18px;
-    font-size:1.13rem;
-}
-
-footer h3 {
-    margin-bottom: 18px !important;
-}
-footer a {
-    color: var(--white) !important;
-    padding:0px 0 2px;
-    text-decoration:none;
-}
-footer a:hover,footer a:focus {
-    color:var(--white);
-    text-decoration:none;
+    color: var(--black);
+    padding:44px 28px;
 }
 
 
@@ -1130,9 +1269,8 @@ footer a:hover,footer a:focus {
  
 }
 .footer_copy {
-    margin-left:auto;
-    max-width:500px;
-    margin-top: 0;
+    margin-left:0;
+    max-width:390px;
 }
 footer p a:not(.arrowlink, .btn-round, .btn-square).button_CTA {
     padding: 24px 30px;
@@ -1159,6 +1297,52 @@ footer p a:not(.arrowlink, .btn-round, .btn-square).button_CTA {
     display:block;
     min-width:95px
 }
+
+footer .wpforms-container {margin-top:10px !important}
+img.footer_logo {
+    margin: 40px 0 10px;
+}
+
+
+
+
+div.wpforms-container-full button[type=submit]:after {
+    content:"";
+    margin-left:16px;
+    background:url(/wp-content/uploads/Right-Arrow-Black.svg) center center / contain no-repeat;
+    width:17px;
+    height:13px;
+    display:inline-block;
+    transition:all .25s ease !important;
+}
+div.wpforms-container-full button[type=submit] {
+    border-radius: 100px !important;
+    background: var(--orange-medium) !important;
+    color: var(--black) !important;
+    padding: 10px !important;
+    height: 58px !important;
+    width: 100% !important;
+    font-family: var(--font-content) !important;
+    font-size: 18px !important;
+    font-size: 1.13rem !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: normal !important;
+    transition:all .25s ease !important;
+}
+div.wpforms-container-full button[type=submit]:hover:after {
+    margin-left:22px;
+}
+div.wpforms-container-full button[type=submit]:hover {
+    transform:scale(1.05);
+}
+
+div.wpforms-container .wpforms-form .wpforms-field-layout .wpforms-layout-column:not(.wpforms-layout-column-100) input[type=text] {
+    border:0;
+    border-radius:6px;
+}
+
+footer .ackno_text {margin-top:16px;}
 
 
 
@@ -1268,8 +1452,9 @@ footer p a:not(.arrowlink, .btn-round, .btn-square).button_CTA {
     /**********/
     /* Footer */
     /**********/
-    .footer_row {
-        gap:26px;
+
+        .footer_col.col2 {
+        max-width: 425px;
     }
 }
 
@@ -1807,32 +1992,17 @@ footer p a:not(.arrowlink, .btn-round, .btn-square).button_CTA {
     /* Footer */
     /**********/
     footer {        
-        padding-top: 50px;    
-        padding-bottom: 50px;    
+        padding-bottom: 390px;
     }
-    .footer_row {
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .footer_col.col1{
-        order:2;
-        min-width:initial;
-    } 
-    .footer_col.col2{
-        order:1;
-        flex: 1 1 100%;
-        max-width: 100%;
-    } 
-    .footer_col.col3{
-        min-width:initial;
-        order:3;
-    } 
-    .footer_rowlast {         margin-top: 50px;    }
+    
+    
     .row_last_inner {
         flex-wrap: wrap;
         justify-content: flex-start;
     }
     .footer_copy {    margin-left: 0; }  
+    .footer_acknowledgement {display:none;}
+
  
 }
 
@@ -1849,6 +2019,23 @@ footer p a:not(.arrowlink, .btn-round, .btn-square).button_CTA {
         --header-height: 60px;
         --content-padding:18px;
         --content-padding-top:80px;
+        --topbanner-height:100px;
+    }
+
+    /**********************/
+    /* Top Updates Banner */
+    /**********************/
+    body.admin-bar .top_banner { top: 46px; }
+    .top_banner_inner {         
+        gap: 0 10px;
+        padding: 0;
+    }
+
+    .top_banner_inner {    flex-wrap: wrap;}
+    .top_banner_close {order:1}
+    .banner_text {
+        order:2;
+        flex-basis: 100%;
     }
     
     

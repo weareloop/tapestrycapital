@@ -100,11 +100,6 @@ body.fl-builder-edit .hero-animation{
         right:-150px;
     }
 }
-body.fl-builder-edit .hero-simple-img{
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 50%;
-}
 .hero-simple-img{
     flex-basis: auto;
     flex-grow: 1;

@@ -312,6 +312,52 @@ jQuery(document).ready(function( $ ) {
     searchbox_location()
 
 
+
+
+
+
+
+
+    ////////////////
+    // Top Banner //
+    ////////////////
+    setTimeout(function(){
+        if ($(".top_banner:visible").length>0) {
+            $("header.fl-page-header").addClass("with_topbanner")
+            $("#fl-main-content").addClass("with_topbanner")
+            $(".top_banner").addClass("init")
+        }
+    },100)
+    function body_scrolled() {
+        if ($(window).scrollTop()>0) $("body").addClass("body_scrolled")
+        else $("body").removeClass("body_scrolled")
+    }
+    body_scrolled()
+
+    // Top banner Cookies 
+    // Check if the user has already accepted cookies
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+        $('#cookie-banner').hide(); // Hide the banner if already accepted
+        $("header.fl-page-header").removeClass("with_topbanner")
+        $("#fl-main-content").removeClass("with_topbanner")
+    }
+
+    // Handle the click event on the "Accept and Close" button
+    $('#accept-cookies').click(function() {
+        console.log("closing!")
+        $('#cookie-banner').hide(); // Fade out the banner
+        localStorage.setItem('cookieConsent', 'accepted'); // Store consent in local storage
+        // Alternatively, use jQuery Cookie plugin: $.cookie('cookieConsent', 'accepted', { expires: 365, path: '/' });
+        $.cookie('cookieConsent', 'accepted', { expires: 1 }); // 1 day
+        $("header.fl-page-header").removeClass("with_topbanner")
+        $("#fl-main-content").removeClass("with_topbanner")
+    });
+
+
+
+    
+
+
     
     
 

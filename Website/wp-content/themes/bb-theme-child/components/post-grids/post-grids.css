@@ -872,11 +872,14 @@ body:not(.fl-builder-edit) .post-hero-row .background-pattern{
     top: -130px;
     right: 100px;
     height: 170%;
-    @media screen and (max-width: 1366px) {
-        right:49px
+    @media screen and (max-width: 992px) {
+        right:16px
     }
     @media screen and (max-width: 768px) {
-        display: none;
+        right: unset;
+        top: -20px;
+        height: 360px;
+        left: -80px;
     }
 }
 /*share*/
