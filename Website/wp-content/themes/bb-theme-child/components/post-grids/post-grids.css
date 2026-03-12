@@ -873,6 +873,9 @@ body:not(.fl-builder-edit) .post-hero-row .background-pattern{
     right: 100px;
     height: 170%;
     @media screen and (max-width: 1366px) {
+        right:49px
+    }
+    @media screen and (max-width: 768px) {
         display: none;
     }
 }

@@ -14,9 +14,9 @@
 
 /*Background video row*/
 .fl-row-bg-video .fl-bg-video iframe{
-    min-height: 140vh;
-    min-width: 220vh;
-    top: 50%;
+    min-height: 150vw;
+    min-width: 150vw;
+    top: 57%;
 }
 
 /* Background video modal */
@@ -76,7 +76,7 @@ body:not(.fl-builder-edit) .video_modal {
     font-size: 18px;
     font-family: var(--font-content);
     gap: 12px;
-    background: var(--orange-tapestry);
+    background: var(--orange-tapestry)!important;
     align-items: center;
     border: none;
     transition: all ease 0.2s;
