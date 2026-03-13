@@ -14,7 +14,7 @@
 
 :root {
     /* VARS */
-    --header-height: 130px;
+    --header-height: 82px;
     --topbar-height: 39px;
     --topbanner-height:60px;
 }
@@ -1369,7 +1369,7 @@ footer .ackno_text {margin-top:16px;}
 
     /* VARS */
     :root {
-         /* --header-height: 100px; */
+         --header-height: 67px;
          --content-padding:60px;
     }
 
@@ -1473,7 +1473,7 @@ footer .ackno_text {margin-top:16px;}
 
     /* VARS */
     :root {
-        --header-height: 67px;
+        /* --header-height: 67px; */
         --content-padding:36px;
         --content-padding-top:100px;
     }
