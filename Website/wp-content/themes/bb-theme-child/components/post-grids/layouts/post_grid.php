@@ -1,7 +1,7 @@
 <?php
 $layout = 'grid';
 $readmore = (isset($_GET['readmore'])) ? $_GET['readmore'] : 'readmore';
-$numberperpage = (isset($_GET['numberperpage'])) ? intval($_GET['numberperpage']) : 9;
+$numberperpage = (isset($_GET['numberperpage'])) ? intval($_GET['numberperpage']) : 6;
         echo "<div class='posts ".$layout."'>";
             foreach($posts as $key=>$post){
                     
@@ -15,11 +15,8 @@ $numberperpage = (isset($_GET['numberperpage'])) ? intval($_GET['numberperpage']
                     $desc = get_field("short_description", $post->ID);
                     $link_type = trim(get_field("link_url", $post->ID));
 
-                    if(get_field("link_to", $post->ID)=='pdf'){
-                        $link_url = get_field("pdf", $post->ID);
-                        $link_target = '_blank';
-                    }elseif(get_field("link_to", $post->ID)=='external'){
-                        $link_url = get_field("link_url", $post->ID);
+                    if($external_link){
+                        $link_url = $external_link;
                         $link_target = '_blank';
                     }else{
                         $link_url = get_permalink($post->ID);
