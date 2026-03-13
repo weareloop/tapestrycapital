@@ -18,6 +18,43 @@ FLTheme::head();
 </head>
 <body <?php body_class(); ?><?php FLTheme::print_schema( ' itemscope="itemscope" itemtype="https://schema.org/WebPage"' ); ?>>
 
+
+
+<?php 
+    
+    ////////////////
+    // Top Banner //
+    ////////////////
+
+    $banner  = get_field('banner', 'option'); 
+    $banner_show  = $banner["banner_show"];
+    $banner_text  = $banner["banner_text"];
+    $banner_color  = $banner["banner_color"];
+
+    if ($banner_show == 1) {
+        ?>
+            <div id="cookie-banner" class="top_banner" style="background:<?=$banner_color;?>">
+                <h2 id="update-banner" class="sr-only">Updates Banner</h2>
+                <div class="top_banner_inner">
+                    <div class="banner_text"><?=$banner_text;?></div>
+                    <button id="accept-cookies" class="top_banner_close">Close banner</button>
+                </div>
+            </div>
+        <?php
+    }
+
+
+?>
+
+
+
+
+
+
+
+
+
+
 <?php
 
     ////////////////

@@ -40,13 +40,10 @@ function loop_scripts()
     wp_enqueue_script('main_js', get_stylesheet_directory_uri() . '/javascript/main.js', array('jquery'), rand());
 
 
-    // Fonts + Icons
-    //wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',array(),rand());
-    //wp_enqueue_style( 'ultimate-icons', get_stylesheet_directory_uri() . '/../../uploads/bb-plugin/icons/ultimate-icons/style.css?ver=2.5.5.4',array(),rand());
-
-    // Includes (modules)
-    //wp_enqueue_style( 'people-post',   get_stylesheet_directory_uri() . '/includes/post-types/people/people.css',array(),rand());
-    //wp_enqueue_style( 'timeline-post',   get_stylesheet_directory_uri() . '/includes/post-types/timeline/timeline.css',array(),rand());
+    
+    //jquery-cookie
+    wp_enqueue_script('jquery-cookie',get_stylesheet_directory_uri() . '/jquery-cookie-master/src/jquery.cookie.js',array( 'jquery' ),rand());
+    
 }
 add_action('wp_enqueue_scripts', 'loop_scripts', 999999);
 
@@ -759,3 +756,77 @@ add_filter('wp_img_tag_add_auto_sizes', '__return_false');
 // removes speculationrules error //
 ////////////////////////////////////
 add_filter('wp_speculation_rules_configuration', '__return_null');
+
+
+
+
+
+
+add_shortcode( 'social_networks', 'social_networks' );
+function social_networks() {
+    
+    ob_start();
+    $sn_group = get_field('siteoptions_sn_group','option')
+    
+    
+    ?>
+        <h3 id="sn-title" class="sr-only">Connect with us</h3>
+        <ul aria-labelledby="sn-title" class="social_networks">
+            <?php if ($sn_group['sn_facebook']) { ?>
+                <li><a href="<?php echo $sn_group['sn_facebook']; ?>" target="_self" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+            <?php } ?>
+
+            <?php if ($sn_group['sn_twitter']) { ?>
+                <li><a href="<?php echo $sn_group['sn_twitter']; ?>" target="_self" aria-label="Twitter"><i class="ua-icon ua-icon-x" aria-hidden="true"></i></a></li>
+            <?php } ?>
+
+            <?php if ($sn_group['sn_instagram']) { ?>
+                <li><a href="<?php echo $sn_group['sn_instagram']; ?>" target="_self" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+            <?php } ?>
+
+            <?php if ($sn_group['sn_youtube']) { ?>
+                <li><a href="<?php echo $sn_group['sn_youtube']; ?>" target="_self" aria-label="YouTube"><i class="fab fa-youtube hidefocus" aria-hidden="true"></i></a></li>
+            <?php } ?>
+
+            <?php if ($sn_group['sn_linkedin']) { ?>
+                <li><a href="<?php echo $sn_group['sn_linkedin']; ?>" target="_self" aria-label="LinkedIn"><i class="fab fa-linkedin-in hidefocus" aria-hidden="true"></i></a></li>
+            <?php } ?>
+
+            <?php if ($sn_group['sn_bluesky']) { ?>
+                <li><a href="<?php echo $sn_group['sn_bluesky']; ?>" target="_self" aria-label="LinkedIn">BS Logo missing</a></li>
+            <?php } ?>
+
+        </ul>
+
+    <?php 
+	
+    return ob_get_clean();
+
+}
+
+/* Current Year Shortcode */
+function current_year() {
+    $year = date('Y');
+    return $year;
+}
+
+add_shortcode('year', 'current_year');
+
+
+
+
+
+
+// Admin custom styles to Wp-Admin
+function wpadmin_custom_style() {
+    echo '<style>
+        /* Custom admin styles from functions.php */
+        .options_banner_text .acf-editor-wrap iframe {
+            height: 80px !important; /* Set your desired height */
+            min-height: 0 !important; /* Override the default min-height */
+        }
+    </style>';
+}
+add_action( 'admin_head', 'wpadmin_custom_style' );
+
+
