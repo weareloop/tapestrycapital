@@ -300,7 +300,7 @@ jQuery(document).ready(function( $ ) {
     
     $searchbox = $("#searchbox")
     function searchbox_location(){
-        if ($(window).width()>991) {
+        if ($(window).width()>992) {
             if (!$(".header_inner >#searchbox").length)
                 $(".header_inner").prepend($searchbox);
         }
@@ -355,7 +355,7 @@ jQuery(document).ready(function( $ ) {
 
 
 
-    
+
 
 
     
